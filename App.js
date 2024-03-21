@@ -4,7 +4,7 @@ import ReactDOM  from 'react-dom/client';
 const heading = React.createElement("h1",{id:'heading', class:"heading"},"Hello World");
 // React JSX -> -> parcel -> Bable -> RCE  -> RE (JS object) -> Render to browser with render method
 const jsxHeading = (<h1 id='heading'>
-    React JSX
+    {heading} <h1>React JSX</h1>
 </h1>)
 // Functional Component
 const HeadingFuncComponent = () => {
@@ -13,7 +13,7 @@ const HeadingFuncComponent = () => {
 const HeadingFuncComponent2 = () => <h1>This is headingFuncComponent2</h1>
 const HeadingFuncComponent3 = () => {
     return <div>
-        {heading}
+        {jsxHeading}
     <HeadingFuncComponent />
     <HeadingFuncComponent2 />
     </div>
