@@ -6,12 +6,14 @@ const heading = React.createElement("h1",{id:'heading', class:"heading"},"Hello 
 const jsxHeading = (<h1 id='heading'>
     React JSX
 </h1>)
+// Functional Component
 const HeadingFuncComponent = () => {
     return <h1>This is headingFuncComponent</h1>
 };
 const HeadingFuncComponent2 = () => <h1>This is headingFuncComponent2</h1>
 const HeadingFuncComponent3 = () => {
     return <div>
+        {heading}
     <HeadingFuncComponent />
     <HeadingFuncComponent2 />
     </div>
