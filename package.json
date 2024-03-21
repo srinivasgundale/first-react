@@ -1,0 +1,22 @@
+{
+  "name": "first",
+  "version": "1.0.0",
+  "description": "first project",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srinivasgundale/first-react.git"
+  },
+  "author": "sri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srinivasgundale/first-react/issues"
+  },
+  "homepage": "https://github.com/srinivasgundale/first-react#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
