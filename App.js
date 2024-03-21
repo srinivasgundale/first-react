@@ -9,6 +9,12 @@ const jsxHeading = (<h1 id='heading'>
 const HeadingFuncComponent = () => {
     return <h1>This is headingFuncComponent</h1>
 };
-const HeadingFuncComponent2 = () => <h1>This is headingFuncComponent</h1>
+const HeadingFuncComponent2 = () => <h1>This is headingFuncComponent2</h1>
+const HeadingFuncComponent3 = () => {
+    return <div>
+    <HeadingFuncComponent />
+    <HeadingFuncComponent2 />
+    </div>
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<HeadingFuncComponent />);
+root.render(<HeadingFuncComponent3 />);
