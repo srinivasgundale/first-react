@@ -13,18 +13,21 @@ const RestaurantCard = (props) => {
     } = resData;
   
     return (
-      <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-        <img 
-          className="res-logo"
-          alt="res-logo"
-          src={image}
-        />
-        <h3>{title}</h3>
-        <h4>{description.substring(0, 50)}</h4>
-        <h4>{rating.rate} stars</h4>
-        <h4>₹{price}</h4>
-        <h4>{category}</h4>
+      
+      
+      <div className="card">
+            <img className="card-image" src={image} alt="Avatar"  />
+            <div className="card-container">
+              <h4><b>{title}</b></h4>
+              <p>{description.substring(0, 50)}</p>
+              <p>{rating.rate} stars</p>
+              <p>₹{price}</p>
+              <p>{category}</p>
+            </div>
       </div>
+
+        
+      
     );
   };
   

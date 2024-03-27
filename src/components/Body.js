@@ -33,25 +33,12 @@ const Body = () => {
     <ShimmerCards />
   ) : (
     <div className="body">
-      <div className="filter">
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = listOfRest.filter(
-              (res) => res.rating.rate >= 4
-            );
-            setFilteredRestaurant(filteredList);
-          }}
-        >
-          Filter
-        </button>
-      </div>
-
-      <div className="cat-container">
+      <div className="cat-container btn-group">
         <ul>
           {listOfCategories.map((cat, index) => (
             <li key={index}>
               <button
+                className=" button"
                 onClick={() => {
                   const filteredList = listOfRest.filter(
                     (res) => res.category === cat
@@ -65,9 +52,22 @@ const Body = () => {
             </li>
             /*<CategoryList key={index} catData={cat} />*/
           ))}
+          <li>
+            <button
+              className=" button"
+              onClick={() => {
+                const filteredList = listOfRest.filter(
+                  (res) => res.rating.rate >= 4
+                );
+                setFilteredRestaurant(filteredList);
+              }}
+            >
+              Top Products
+            </button>
+          </li>
         </ul>
       </div>
-
+      <br />
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
           <RestaurantCard key={restaurant.id} resData={restaurant} />
