@@ -3,29 +3,27 @@ const RestaurantCard = (props) => {
     const { resData } = props;
   
     const {
-      cloudinaryImageId,
-      name,
-      avgRating,
-      cuisines,
-      costForTwo,
-      deliveryTime,
-    } = resData?.data;
+      category,
+      description,
+      id,
+      image,
+      price,
+      rating,
+      title
+    } = resData;
   
     return (
       <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-        <img
+        <img 
           className="res-logo"
           alt="res-logo"
-          src={
-            "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-            cloudinaryImageId
-          }
+          src={image}
         />
-        <h3>{name}</h3>
-        <h4>{cuisines.join(", ")}</h4>
-        <h4>{avgRating} stars</h4>
-        <h4>₹{costForTwo / 100} FOR TWO</h4>
-        <h4>{deliveryTime} minutes</h4>
+        <h3>{title}</h3>
+        <h4>{description.substring(0, 50)}</h4>
+        <h4>{rating.rate} stars</h4>
+        <h4>₹{price}</h4>
+        <h4>{category}</h4>
       </div>
     );
   };
