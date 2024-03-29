@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import ShimmerCards from "./../components/ShimmerCards";
-
+import { Link } from "react-router-dom";
 const Body = () => {
   // local state variable
   // the below syntax is de structuring the use state returned array
@@ -98,7 +98,10 @@ const Body = () => {
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
-              <RestaurantCard key={restaurant.id} resData={restaurant} />
+              <Link  key={restaurant.id} to={"/product/"+restaurant.id} >
+              <RestaurantCard  resData={restaurant} /> 
+              </Link>
+              
             ))}
           </div>
         </div>
