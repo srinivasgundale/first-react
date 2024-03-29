@@ -6,7 +6,7 @@ import ReactDOM from "react-dom/client";
 
 import Header from './components/Head'
 import Body from './components/Body'
-import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom';
 import  AboutUs  from './components/AboutUs';
 import  ContactUs  from './components/ContactUs';
 import Error from './components/Error';
@@ -14,7 +14,7 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
@@ -22,19 +22,24 @@ const appRouter = createBrowserRouter([
   {
     path : '/',
     element : <AppLayout />,
-    errorElement : <Error />
+    children: [
+      {
+        path : '/',
+        element : <Body />,
+      },
+      {
+        path : '/contact',
+        element : <ContactUs />,
+      },
+      {
+        path : '/about-us',
+        element : <AboutUs />,
+      }
+    ],
+      errorElement : <Error />
   },
-  {
-    path : '/contact',
-    element : <ContactUs />,
-    errorElement : <Error />
-  },
-  {
-    path : '/about-us',
-    element : <AboutUs />,
-    errorElement : <Error />
-  }
+  
 ]);
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("mitro"));
 
 root.render(<RouterProvider router={appRouter} />);
