@@ -1,7 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ShimmerCards from "./../components/ShimmerCards";
-import { useEffect } from "react";
 
 const Body = () => {
   // local state variable
@@ -95,13 +94,12 @@ const Body = () => {
           </form>
         </nav>
         <br />
-        <div className="album py-5 bg-light">
-          <div className="container">
-            <div className="row">
-              {filteredRestaurant.map((restaurant) => (
-                <RestaurantCard key={restaurant.id} resData={restaurant} />
-              ))}
-            </div>
+
+        <div className="container">
+          <div className="row">
+            {filteredRestaurant.map((restaurant) => (
+              <RestaurantCard key={restaurant.id} resData={restaurant} />
+            ))}
           </div>
         </div>
       </div>
