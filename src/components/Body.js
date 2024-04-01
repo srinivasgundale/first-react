@@ -1,34 +1,27 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import ShimmerCards from "./../components/ShimmerCards";
-import { Link } from "react-router-dom";
+import useListOfRest from "./../utils/useListOfRest";
+import useListOfCategories from "./../utils/useListOfCategories";
 const Body = () => {
+  const { listOfRest } = useListOfRest();
+  console.log("🚀 ~ Body ~ listOfRest:", listOfRest);
+
   // local state variable
   // the below syntax is de structuring the use state returned array
-  const [listOfRest, setListOfRestraunt] = useState([]);
+
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const [listOfCategories, setListOfCategories] = useState([]);
+  console.log("🚀 ~ Body ~ filteredRestaurant:", filteredRestaurant);
+
+  const listOfCategories = useListOfCategories();
+  console.log("🚀 ~ Body ~ listOfCategories:", listOfCategories);
+
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
-    fetchData();
-  }, []);
-  console.log("🚀 ~ useEffect ~ fetchData:");
-  const fetchData = async () => {
-    const data = await fetch("https://fakestoreapi.com/products");
+    setFilteredRestaurant(listOfRest);
+  }, [listOfRest]);
+  //console.log("🚀 ~ useEffect ~ fetchData:");
 
-    const json = await data.json();
-    console.log("🚀 ~ fetchData ~ json:", json);
-    const category = await fetch(
-      "https://fakestoreapi.com/products/categories"
-    );
-
-    const categoryJson = await category.json();
-    console.log("🚀 ~ fetchData ~ categoryJson:", categoryJson);
-    // Optional Chaining
-    setListOfRestraunt(json);
-    setListOfCategories(categoryJson);
-    setFilteredRestaurant(json);
-  };
   return listOfRest.length === 0 ? (
     <ShimmerCards />
   ) : (
