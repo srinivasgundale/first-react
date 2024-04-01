@@ -64,7 +64,7 @@ const Body = () => {
             Top Products
           </a>
           <form className="form-inline">
-            <div className="form-group mx-sm-3 mb-2">
+            <div className="mb-2 form-group mx-sm-3">
               <input
                 type="text"
                 className="form-control mr-sm-2"
@@ -76,7 +76,7 @@ const Body = () => {
               />
             </div>
             <button
-              className="btn btn-outline-success my-2 my-sm-0"
+              className="my-2 btn btn-outline-success my-sm-0"
               onClick={() => {
                 // Filter the restraunt cards and update the UI
                 // searchText
@@ -98,10 +98,7 @@ const Body = () => {
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
-              <Link  key={restaurant.id} to={"/product/"+restaurant.id} >
-              <RestaurantCard  resData={restaurant} /> 
-              </Link>
-              
+              <RestaurantCard key={restaurant.id} resData={restaurant} />
             ))}
           </div>
         </div>
