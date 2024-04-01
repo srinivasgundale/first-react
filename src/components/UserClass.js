@@ -3,20 +3,21 @@ class Userclass extends React.Component {
   constructor(props) {
     super(props);
     console.log("🚀 ~ UserclassName ~ constructor ~ props:", props);
-    this.state = {
-      count: 0,
-      count2: 0,
-    };
+    this.state = {};
     console.log("🚀 ~ User ~ constructor ~ state:", this.state);
   }
   componentDidMount() {
     console.log("🚀 ~ User ~ componentDidMount ~ componentDidMount:");
   }
+  componentDidUpdate() {
+    console.log("🚀 ~ User ~ componentDidUpdate ~ componentDidUpdate:");
+  }
   render() {
     console.log("🚀 ~ User ~ render ~ render:");
+    const { user } = this.props;
+    const { name, email, phone, username } = user;
+    console.log("🚀 ~ User ~ render ~ name:", name, email, phone, username);
 
-    const { name, email } = this.props;
-    const { count, count2 } = this.state;
     const myStyle = {
       maxWidth: "500px",
     };
@@ -25,32 +26,28 @@ class Userclass extends React.Component {
         <div className="mb-3 card">
           <div className="row g-0">
             <div className="col-md-4">
-              <img src="..." className="img-fluid rounded-start" alt="..." />
+              <img
+                src="https://picsum.photos/200/300"
+                className="img-fluid rounded-start"
+                alt="..."
+              />
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <p className="card-text">{email}</p>
-                <p className="card-text">Count : {count}</p>
-                <p className="card-text">Count2 : {count2}</p>
+                <h5 className="card-title">
+                  Name: {name.firstname + " " + name.lastname}
+                </h5>
+                <p className="card-text">Email: {email}</p>
+
+                <p className="card-text"> Phone: {phone}</p>
                 <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p className="card-text">
-                  <small className="text-body-secondary">
-                    Last updated 3 mins ago
-                  </small>
+                  <small className="text-body-secondary">@{username}</small>
                 </p>
                 <button
                   className="btn btn-sm btn-primary"
                   onClick={() => {
                     console.log("🚀 ~ User ~ render ~ setState:");
-                    this.setState({
-                      count: this.state.count + 1,
-                      count2: this.state.count2 + 2,
-                    });
+                    this.setState({});
                   }}
                 >
                   Increment

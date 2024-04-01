@@ -4,20 +4,34 @@ import UserClass from "./../components/UserClass";
 class AboutUs extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      users: [],
+    };
     console.log("🚀 ~ AboutUs ~ constructor ~ props:", this.props);
   }
-  componentDidMount() {
+  async componentDidMount() {
     console.log("🚀 ~ AboutUs ~ componentDidMount ~ componentDidMount:");
+    const data = await fetch("https://fakestoreapi.com/users");
+
+    const json = await data.json();
+    console.log("🚀 ~ fetchData ~ json:", json);
+    this.setState({
+      users: json,
+    });
+  }
+  componentDidUpdate() {
+    console.log("🚀 ~ AboutUs ~ componentDidUpdate ~ componentDidUpdate:");
   }
   render() {
     console.log("🚀 ~ AboutUs ~ render ~ render:");
+    console.log("🚀 ~ AboutUs ~ render ~ state:", this.state.users);
 
     return (
       <div className="container">
         <div className="flex flex-nowarap row">
-          <UserClass name="sri" email="s@gm.com" />
-          <UserClass name="sri1" email="s1@gm.com" />
-          <UserClass name="sri2" email="s2@gm.com" />
+          {this.state.users.map((user) => (
+            <UserClass key={user.id} user={user} />
+          ))}
         </div>
       </div>
     );
