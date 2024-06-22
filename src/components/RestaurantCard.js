@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 const RestaurantCard = (props) => {
   const { resData, addToCart, cart } = props;
+  console.log("🚀 ~ RestaurantCard ~ resData:", resData);
   const { category, description, id, image, price, rating, title } = resData;
 
   const isAddedToCart = cart.some((cartItem) => cartItem.id === id);

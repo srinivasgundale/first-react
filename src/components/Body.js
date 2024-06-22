@@ -42,6 +42,8 @@ const Body = () => {
   };
   */
   const addToCart = (item) => {
+    console.log("🚀 ~ addToCart ~ item:", item);
+
     setCart((prevCart) => {
       const itemIndex = prevCart.findIndex(
         (cartItem) => cartItem.id === item.id
