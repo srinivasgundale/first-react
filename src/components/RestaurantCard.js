@@ -33,17 +33,14 @@ const RestaurantCard = (props) => {
 
           <button
             className={`mt-2 btn ${
-              isAddedToCart ? "btn-success" : "btn-primary"
+              isAddedToCart ? "btn-danger" : "btn-primary"
             }`}
             onClick={(e) => {
               e.preventDefault();
-              if (!isAddedToCart) {
-                addToCart(resData);
-              }
+              addToCart(resData);
             }}
-            disabled={isAddedToCart}
           >
-            {isAddedToCart ? "Added to Cart" : "Add to Cart"}
+            {isAddedToCart ? "Remove from Cart" : "Add to Cart"}
           </button>
         </div>
       </div>

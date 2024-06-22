@@ -33,12 +33,19 @@ const Body = () => {
 
   const addToCart = (item) => {
     setCart((prevCart) => {
-      if (!prevCart.some((cartItem) => cartItem.id === item.id)) {
+      const itemIndex = prevCart.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+      if (itemIndex !== -1) {
+        // If item is already in cart, remove it
+        const updatedCart = [...prevCart];
+        updatedCart.splice(itemIndex, 1);
+        return updatedCart;
+      } else {
+        // If item is not in cart, add it
         return [...prevCart, item];
       }
-      return prevCart;
     });
-    console.log("🚀 ~ Body ~ cart:", cart);
   };
 
   return listOfRest.length === 0 ? (
