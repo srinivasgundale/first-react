@@ -1,14 +1,16 @@
-import RestaurantCard, { WithPromotedLable } from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import RestaurantCard, { WithPromotedLable } from "./RestaurantCard";
 import ShimmerCards from "./../components/ShimmerCards";
 import useListOfRest from "./../utils/useListOfRest";
 import useListOfCategories from "./../utils/useListOfCategories";
+import {
+  saveCartToLocalStorage,
+  loadCartFromLocalStorage,
+} from "./../utils/localStorage";
+
 const Body = () => {
   const { listOfRest } = useListOfRest();
   console.log("🚀 ~ Body ~ listOfRest:", listOfRest);
-
-  // local state variable
-  // the below syntax is de structuring the use state returned array
 
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   console.log("🚀 ~ Body ~ filteredRestaurant:", filteredRestaurant);
@@ -19,10 +21,15 @@ const Body = () => {
   const RestaurantCardPromoted = WithPromotedLable(RestaurantCard);
 
   const [searchText, setSearchText] = useState("");
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(loadCartFromLocalStorage());
+
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
   }, [listOfRest]);
+
+  useEffect(() => {
+    saveCartToLocalStorage(cart);
+  }, [cart]);
 
   const addToCart = (item) => {
     setCart((prevCart) => {
@@ -33,7 +40,6 @@ const Body = () => {
     });
     console.log("🚀 ~ Body ~ cart:", cart);
   };
-  //console.log("🚀 ~ useEffect ~ fetchData:");
 
   return listOfRest.length === 0 ? (
     <ShimmerCards />
@@ -43,10 +49,9 @@ const Body = () => {
         <nav className="navbar navbar-expand-lg navbar-light categories-container">
           <ul className="mr-auto navbar-nav">
             {listOfCategories.map((cat, index) => (
-              <li className="nav-item active">
+              <li className="nav-item active" key={index}>
                 <a
-                  key={index}
-                  className=" nav-link"
+                  className="nav-link"
                   onClick={() => {
                     const filteredList = listOfRest.filter(
                       (res) => res.category === cat
@@ -58,7 +63,6 @@ const Body = () => {
                   {cat.toUpperCase()}
                 </a>
               </li>
-              /*<CategoryList key={index} catData={cat} />*/
             ))}
             <li className="nav-item">
               <a
@@ -74,7 +78,7 @@ const Body = () => {
                 TOP PRODUCTS
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item active">
               <a key={"form"} className="nav-link">
                 <form className="form-inline">
                   <div className="mb-2 form-group mx-sm-3">
@@ -91,8 +95,7 @@ const Body = () => {
                   <button
                     className="my-2 btn btn-outline-success my-sm-0 d-none"
                     onClick={() => {
-                      // Filter the restraunt cards and update the UI
-                      // searchText
+                      // Filter the restaurant cards and update the UI
                       console.log(searchText);
 
                       const filteredRestaurant = listOfRest.filter((res) =>
@@ -109,29 +112,25 @@ const Body = () => {
                 </form>
               </a>
             </li>
-            <li className="nav-item">
-              <span className="navbar-text">
-                Cart: {cart.length} item{cart.length !== 1 ? "s" : ""}
-              </span>
-            </li>
           </ul>
+          <span className="navbar-text">
+            Cart: {cart.length} item{cart.length !== 1 ? "s" : ""}
+          </span>
         </nav>
         <br />
 
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
-              <div className="col-md-3 rest-card">
-                {restaurant.id == 1 ? (
+              <div className="col-md-3 rest-card" key={restaurant.id}>
+                {restaurant.id === 1 ? (
                   <RestaurantCardPromoted
-                    key={restaurant.id}
                     resData={restaurant}
                     addToCart={addToCart}
                     cart={cart}
                   />
                 ) : (
                   <RestaurantCard
-                    key={restaurant.id}
                     resData={restaurant}
                     addToCart={addToCart}
                     cart={cart}
@@ -145,4 +144,5 @@ const Body = () => {
     </main>
   );
 };
+
 export default Body;

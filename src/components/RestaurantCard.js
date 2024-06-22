@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+
 const RestaurantCard = (props) => {
   const { resData, addToCart, cart } = props;
-
   const { category, description, id, image, price, rating, title } = resData;
+
   const isAddedToCart = cart.some((cartItem) => cartItem.id === id);
+
   return (
     <Link className="col-md-3 card-link" key={id} to={"/product/" + id}>
       <div className="mb-4 shadow-sm card">
@@ -53,10 +55,11 @@ export const WithPromotedLable = (RestaurantCard) => {
   return (props) => {
     return (
       <>
-        <span className="btn btn-info sponsed-lable">Sponsered</span>
+        <span className="btn btn-info sponsed-lable">Sponsored</span>
         <RestaurantCard {...props} />
       </>
     );
   };
 };
+
 export default RestaurantCard;

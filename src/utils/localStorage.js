@@ -6,3 +6,5 @@ export const loadCartFromLocalStorage = () => {
   const savedCart = localStorage.getItem("cartData");
   return savedCart ? JSON.parse(savedCart) : [];
 };
+
+export default saveCartToLocalStorage;
