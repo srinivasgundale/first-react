@@ -7,7 +7,7 @@ import {
   saveCartToLocalStorage,
   loadCartFromLocalStorage,
 } from "./../utils/localStorage";
-
+import CartPopup from "./CartPopup";
 const Body = () => {
   const { listOfRest } = useListOfRest();
   console.log("🚀 ~ Body ~ listOfRest:", listOfRest);
@@ -22,7 +22,7 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
   const [cart, setCart] = useState(loadCartFromLocalStorage());
-
+  const [isCartOpen, setIsCartOpen] = useState(false);
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
   }, [listOfRest]);
@@ -59,7 +59,9 @@ const Body = () => {
       }
     });
   };
-
+  const toggleCartPopup = () => {
+    setIsCartOpen((prevState) => !prevState);
+  };
   return listOfRest.length === 0 ? (
     <ShimmerCards />
   ) : (
@@ -131,10 +133,17 @@ const Body = () => {
                 </form>
               </a>
             </li>
+            <li className="nav-item">
+              <span
+                className="navbar-text"
+                style={{ cursor: "pointer" }}
+                onClick={toggleCartPopup}
+              >
+                Cart: {cart.length} item{cart.length !== 1 ? "s" : ""}{" "}
+                <i className="bi bi-cart-fill"></i>
+              </span>
+            </li>
           </ul>
-          <span className="navbar-text">
-            Cart: {cart.length} item{cart.length !== 1 ? "s" : ""}
-          </span>
         </nav>
         <br />
 
@@ -159,6 +168,7 @@ const Body = () => {
             ))}
           </div>
         </div>
+        {isCartOpen && <CartPopup cart={cart} onClose={toggleCartPopup} />}
       </div>
     </main>
   );

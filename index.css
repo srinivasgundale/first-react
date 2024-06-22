@@ -93,3 +93,6 @@ a:hover {
 a:active {
   text-decoration: none;
 }
+.cart-item-image {
+  height: 4rem !important;
+}
