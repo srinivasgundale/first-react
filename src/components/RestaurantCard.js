@@ -4,9 +4,10 @@ const RestaurantCard = (props) => {
   const { resData, addToCart, cart } = props;
   console.log("🚀 ~ RestaurantCard ~ resData:", resData);
   const { category, description, id, image, price, rating, title } = resData;
+  console.log("🚀 ~ RestaurantCard ~ id:", id);
 
   const isAddedToCart = cart.some((cartItem) => cartItem.id === id);
-
+  console.log("🚀 ~ RestaurantCard ~ isAddedToCart:", isAddedToCart);
   return (
     /*<Link className="col-md-3 card-link" key={id} to={"/product/" + id}>*/
     <div className="mb-4 shadow-sm card">
