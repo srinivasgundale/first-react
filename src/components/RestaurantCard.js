@@ -40,7 +40,7 @@ export const WithPromotedLable = (RestaurantCard) => {
   return (props) => {
     return (
       <>
-        <span class="btn btn-primary">Primary</span>
+        <span class="btn btn-primary">Sponsered</span>
         <RestaurantCard {...props} />
       </>
     );
