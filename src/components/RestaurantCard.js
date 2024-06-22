@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 const RestaurantCard = (props) => {
-  const { resData } = props;
+  const { resData, addToCart, cart } = props;
 
   const { category, description, id, image, price, rating, title } = resData;
-
+  const isAddedToCart = cart.some((cartItem) => cartItem.id === id);
   return (
     <Link className="col-md-3 card-link" key={id} to={"/product/" + id}>
       <div className="mb-4 shadow-sm card">
@@ -29,7 +29,20 @@ const RestaurantCard = (props) => {
             <small className="text-muted">₹{price}</small>
           </div>
 
-          <button className="mt-2 btn btn-primary">Add to Cart</button>
+          <button
+            className={`mt-2 btn ${
+              isAddedToCart ? "btn-success" : "btn-primary"
+            }`}
+            onClick={(e) => {
+              e.preventDefault();
+              if (!isAddedToCart) {
+                addToCart(resData);
+              }
+            }}
+            disabled={isAddedToCart}
+          >
+            {isAddedToCart ? "Added to Cart" : "Add to Cart"}
+          </button>
         </div>
       </div>
     </Link>
@@ -40,7 +53,7 @@ export const WithPromotedLable = (RestaurantCard) => {
   return (props) => {
     return (
       <>
-        <span class="btn btn-primary">Sponsered</span>
+        <span className="btn btn-info sponsed-lable">Sponsered</span>
         <RestaurantCard {...props} />
       </>
     );
