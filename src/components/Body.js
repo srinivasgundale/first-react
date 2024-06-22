@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { WithPromotedLable } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import ShimmerCards from "./../components/ShimmerCards";
 import useListOfRest from "./../utils/useListOfRest";
@@ -15,6 +15,8 @@ const Body = () => {
 
   const listOfCategories = useListOfCategories();
   console.log("🚀 ~ Body ~ listOfCategories:", listOfCategories);
+
+  const RestaurantCardPromoted = WithPromotedLable(RestaurantCard);
 
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
@@ -91,7 +93,16 @@ const Body = () => {
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
-              <RestaurantCard key={restaurant.id} resData={restaurant} />
+              <div className="col-md-4">
+                {restaurant.id == 1 ? (
+                  <RestaurantCardPromoted
+                    key={restaurant.id}
+                    resData={restaurant}
+                  />
+                ) : (
+                  <RestaurantCard key={restaurant.id} resData={restaurant} />
+                )}
+              </div>
             ))}
           </div>
         </div>
