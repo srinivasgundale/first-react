@@ -1,7 +1,7 @@
 {
-  "name": "namaste-react",
+  "name": "first-react",
   "version": "1.0.0",
-  "description": "This is Namaste React by Akshay Saini",
+  "description": "This is First React",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --no-source-maps && node obfuscate.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/srinivasgundale/first-react.git"
   },
   "keywords": [],
-  "author": "Akshay Saini",
+  "author": "Srinivas",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/namastedev/namaste-react/issues"
