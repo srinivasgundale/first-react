@@ -44,6 +44,7 @@ const Body = () => {
         console.error("Previous cart is not an array:", prevCart);
         return [];
       }
+      console.log("🚀 ~ Previous cart:", prevCart);
 
       const itemIndex = prevCart.findIndex((cartItem) => {
         if (!cartItem || !cartItem.id) {
@@ -158,11 +159,19 @@ const Body = () => {
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
               <div className="col-md-3 rest-card" key={restaurant.id}>
-                <RestaurantCard
-                  resData={restaurant}
-                  addToCart={addToCart}
-                  cart={cart}
-                />
+                {restaurant.id === 1 ? (
+                  <RestaurantCardPromoted
+                    resData={restaurant}
+                    addToCart={addToCart}
+                    cart={cart}
+                  />
+                ) : (
+                  <RestaurantCard
+                    resData={restaurant}
+                    addToCart={addToCart}
+                    cart={cart}
+                  />
+                )}
               </div>
             ))}
           </div>
