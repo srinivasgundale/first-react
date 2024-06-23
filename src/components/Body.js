@@ -48,6 +48,7 @@ const Body = () => {
 
       const itemIndex = prevCart.findIndex((cartItem) => {
         console.log("🚀 ~ cartItem:", cartItem); // Log each cart item
+        console.log("🚀 ~ cartItem.id:", cartItem.id === item.id);
         return cartItem.id === item.id;
       });
       if (itemIndex !== -1) {
