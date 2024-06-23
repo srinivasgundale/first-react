@@ -158,19 +158,11 @@ const Body = () => {
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
               <div className="col-md-3 rest-card" key={restaurant.id}>
-                {restaurant.id === 1 ? (
-                  <RestaurantCardPromoted
-                    resData={restaurant}
-                    addToCart={addToCart}
-                    cart={cart}
-                  />
-                ) : (
-                  <RestaurantCard
-                    resData={restaurant}
-                    addToCart={addToCart}
-                    cart={cart}
-                  />
-                )}
+                <RestaurantCard
+                  resData={restaurant}
+                  addToCart={addToCart}
+                  cart={cart}
+                />
               </div>
             ))}
           </div>
