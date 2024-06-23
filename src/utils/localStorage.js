@@ -4,7 +4,10 @@ export const saveCartToLocalStorage = (cart) => {
 
 export const loadCartFromLocalStorage = () => {
   const savedCart = localStorage.getItem("cartData");
-  return savedCart ? JSON.parse(savedCart) : [];
+  try {
+    return savedCart ? JSON.parse(savedCart) : [];
+  } catch (e) {
+    console.error("Failed to parse cart data from local storage", e);
+    return [];
+  }
 };
-
-export default saveCartToLocalStorage;

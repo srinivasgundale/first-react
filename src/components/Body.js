@@ -8,21 +8,19 @@ import {
   loadCartFromLocalStorage,
 } from "./../utils/localStorage";
 import CartPopup from "./CartPopup";
+
 const Body = () => {
   const { listOfRest } = useListOfRest();
-  console.log("🚀 ~ Body ~ listOfRest:", listOfRest);
-
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  console.log("🚀 ~ Body ~ filteredRestaurant:", filteredRestaurant);
-
   const listOfCategories = useListOfCategories();
-  console.log("🚀 ~ Body ~ listOfCategories:", listOfCategories);
-
   const RestaurantCardPromoted = WithPromotedLable(RestaurantCard);
-
   const [searchText, setSearchText] = useState("");
-  const [cart, setCart] = useState(loadCartFromLocalStorage());
+  const [cart, setCart] = useState(() => {
+    const savedCart = loadCartFromLocalStorage();
+    return Array.isArray(savedCart) ? savedCart : [];
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
+
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
   }, [listOfRest]);
@@ -37,33 +35,28 @@ const Body = () => {
       return;
     }
 
-    console.log("🚀 ~ addToCart ~ item:", item);
-
     setCart((prevCart) => {
       if (!Array.isArray(prevCart)) {
         console.error("Previous cart is not an array:", prevCart);
         return [];
       }
-      console.log("🚀 ~ Previous cart:", prevCart);
 
-      const itemIndex = prevCart.findIndex((cartItem) => {
+      const validCart = prevCart.filter((cartItem) => cartItem && cartItem.id);
+
+      const itemIndex = validCart.findIndex((cartItem) => {
         if (!cartItem || !cartItem.id) {
           console.error("Cart item is undefined or has no id:", cartItem);
           return false; // Skip undefined or invalid cart items
         }
-        console.log("🚀 ~ cartItem:", cartItem); // Log each cart item
-        console.log("🚀 ~ item:", item);
         return cartItem.id === item.id;
       });
 
       if (itemIndex !== -1) {
-        // If item is already in cart, remove it
-        const updatedCart = [...prevCart];
+        const updatedCart = [...validCart];
         updatedCart.splice(itemIndex, 1);
         return updatedCart;
       } else {
-        // If item is not in cart, add it
-        return [...prevCart, item];
+        return [...validCart, item];
       }
     });
   };
@@ -71,12 +64,13 @@ const Body = () => {
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
   };
+
   return listOfRest.length === 0 ? (
     <ShimmerCards />
   ) : (
     <main role="main" className="container">
       <div className="body">
-        <nav className="navbar navbar-expand-lg navbar-ligh">
+        <nav className="navbar navbar-expand-lg navbar-light">
           <ul className="mr-auto navbar-nav">
             {listOfCategories.map((cat, index) => (
               <li className="nav-item active" key={index}>
@@ -87,7 +81,6 @@ const Body = () => {
                       (res) => res.category === cat
                     );
                     setFilteredRestaurant(filteredList);
-                    console.log("🚀 ~ CategoryList ~ onClick:");
                   }}
                 >
                   {cat.toUpperCase()}
@@ -125,15 +118,11 @@ const Body = () => {
                   <button
                     className="my-2 btn btn-outline-success my-sm-0 d-none"
                     onClick={() => {
-                      // Filter the restaurant cards and update the UI
-                      console.log(searchText);
-
                       const filteredRestaurant = listOfRest.filter((res) =>
                         res.title
                           .toLowerCase()
                           .includes(searchText.toLowerCase())
                       );
-
                       setFilteredRestaurant(filteredRestaurant);
                     }}
                   >
@@ -155,7 +144,6 @@ const Body = () => {
           </ul>
         </nav>
         <br />
-
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
