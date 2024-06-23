@@ -52,7 +52,7 @@ const Body = () => {
           return false; // Skip undefined or invalid cart items
         }
         console.log("🚀 ~ cartItem:", cartItem); // Log each cart item
-        console.log("🚀 ~ item", item);
+        console.log("🚀 ~ item:", item);
         return cartItem.id === item.id;
       });
 
