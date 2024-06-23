@@ -44,6 +44,9 @@ const RestaurantCard = (props) => {
 
 export const WithPromotedLable = (RestaurantCard) => {
   return (props) => {
+    /*const { resData, addToCart, cart } = props;
+    const { category, description, id, image, price, rating, title } = resData;
+    const isAddedToCart = cart.some((cartItem) => cartItem.id === id);*/
     return (
       <>
         <span className="btn btn-info sponsed-lable">Sponsored</span>

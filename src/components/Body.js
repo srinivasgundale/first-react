@@ -31,7 +31,7 @@ const Body = () => {
     saveCartToLocalStorage(cart);
   }, [cart]);
 
-  /*const addToCart = (item) => {
+  const addToCart = (item) => {
     setCart((prevCart) => {
       if (!prevCart.some((cartItem) => cartItem.id === item.id)) {
         return [...prevCart, item];
@@ -40,7 +40,8 @@ const Body = () => {
     });
     console.log("🚀 ~ Body ~ cart:", cart);
   };
-  */
+
+  /*
   const addToCart = (item) => {
     console.log("🚀 ~ addToCart ~ item:", item);
 
@@ -59,6 +60,7 @@ const Body = () => {
       }
     });
   };
+  */
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
   };
@@ -67,7 +69,7 @@ const Body = () => {
   ) : (
     <main role="main" className="container">
       <div className="body">
-        <nav className="navbar navbar-expand-lg navbar-light categories-container">
+        <nav className="navbar navbar-expand-lg navbar-ligh">
           <ul className="mr-auto navbar-nav">
             {listOfCategories.map((cat, index) => (
               <li className="nav-item active" key={index}>
