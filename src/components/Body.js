@@ -31,7 +31,7 @@ const Body = () => {
     saveCartToLocalStorage(cart);
   }, [cart]);
 
-  const addToCart = (item) => {
+  /*const addToCart = (item) => {
     setCart((prevCart) => {
       if (!prevCart.some((cartItem) => cartItem.id === item.id)) {
         return [...prevCart, item];
@@ -39,6 +39,36 @@ const Body = () => {
       return prevCart;
     });
     console.log("🚀 ~ Body ~ cart:", cart);
+  };
+  */
+
+  const addToCart = (item) => {
+    if (!item || !item.id) {
+      console.error("Item is undefined or has no id:", item);
+      return;
+    }
+
+    console.log("🚀 ~ addToCart ~ item:", item);
+
+    setCart((prevCart) => {
+      if (!Array.isArray(prevCart)) {
+        console.error("Previous cart is not an array:", prevCart);
+        return [];
+      }
+
+      const itemIndex = prevCart.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+      if (itemIndex !== -1) {
+        // If item is already in cart, remove it
+        const updatedCart = [...prevCart];
+        updatedCart.splice(itemIndex, 1);
+        return updatedCart;
+      } else {
+        // If item is not in cart, add it
+        return [...prevCart, item];
+      }
+    });
   };
 
   /*
