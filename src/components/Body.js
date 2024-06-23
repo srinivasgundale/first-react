@@ -40,17 +40,20 @@ const Body = () => {
     console.log("🚀 ~ addToCart ~ item:", item);
 
     setCart((prevCart) => {
-      console.log("🚀 ~ setCart ~ prevCart:", prevCart);
       if (!Array.isArray(prevCart)) {
         console.error("Previous cart is not an array:", prevCart);
         return [];
       }
 
       const itemIndex = prevCart.findIndex((cartItem) => {
+        if (!cartItem || !cartItem.id) {
+          console.error("Cart item is undefined or has no id:", cartItem);
+          return false; // Skip undefined or invalid cart items
+        }
         console.log("🚀 ~ cartItem:", cartItem); // Log each cart item
-        console.log("🚀 ~ cartItem.id:", cartItem.id === item.id);
         return cartItem.id === item.id;
       });
+
       if (itemIndex !== -1) {
         // If item is already in cart, remove it
         const updatedCart = [...prevCart];
