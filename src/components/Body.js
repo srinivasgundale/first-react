@@ -52,6 +52,7 @@ const Body = () => {
           return false; // Skip undefined or invalid cart items
         }
         console.log("🚀 ~ cartItem:", cartItem); // Log each cart item
+        console.log("🚀 ~ cartItem.id === item.id:", cartItem.id, item.id);
         return cartItem.id === item.id;
       });
 
