@@ -40,14 +40,16 @@ const Body = () => {
     console.log("🚀 ~ addToCart ~ item:", item);
 
     setCart((prevCart) => {
+      console.log("🚀 ~ setCart ~ prevCart:", prevCart);
       if (!Array.isArray(prevCart)) {
         console.error("Previous cart is not an array:", prevCart);
         return [];
       }
 
-      const itemIndex = prevCart.findIndex(
-        (cartItem) => cartItem.id === item.id
-      );
+      const itemIndex = prevCart.findIndex((cartItem) => {
+        console.log("🚀 ~ cartItem:", cartItem); // Log each cart item
+        return cartItem.id === item.id;
+      });
       if (itemIndex !== -1) {
         // If item is already in cart, remove it
         const updatedCart = [...prevCart];
