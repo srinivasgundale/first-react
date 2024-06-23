@@ -21,10 +21,7 @@ const Body = () => {
   const RestaurantCardPromoted = WithPromotedLable(RestaurantCard);
 
   const [searchText, setSearchText] = useState("");
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cart, setCart] = useState(loadCartFromLocalStorage());
   const [isCartOpen, setIsCartOpen] = useState(false);
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
@@ -47,16 +44,15 @@ const Body = () => {
         console.error("Previous cart is not an array:", prevCart);
         return [];
       }
-
-      // Log the entire previous cart
       console.log("🚀 ~ Previous cart:", prevCart);
-      console.log("🚀 ~ setCart ~ item:", item);
+
       const itemIndex = prevCart.findIndex((cartItem) => {
         if (!cartItem || !cartItem.id) {
           console.error("Cart item is undefined or has no id:", cartItem);
           return false; // Skip undefined or invalid cart items
         }
         console.log("🚀 ~ cartItem:", cartItem); // Log each cart item
+        console.log("🚀 ~ cartItem.id === item.id:", cartItem.id, item.id);
         return cartItem.id === item.id;
       });
 
@@ -64,13 +60,10 @@ const Body = () => {
         // If item is already in cart, remove it
         const updatedCart = [...prevCart];
         updatedCart.splice(itemIndex, 1);
-        console.log("🚀 ~ Item removed from cart:", updatedCart);
         return updatedCart;
       } else {
         // If item is not in cart, add it
-        const updatedCart = [...prevCart, item];
-        console.log("🚀 ~ Item added to cart:", updatedCart);
-        return updatedCart;
+        return [...prevCart, item];
       }
     });
   };
