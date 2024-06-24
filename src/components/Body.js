@@ -29,6 +29,7 @@ const Body = () => {
     saveCartToLocalStorage(cart);
   }, [cart]);
 
+  /*
   const addToCart = (item) => {
     if (!item || !item.id) {
       console.error("Item is undefined or has no id:", item);
@@ -60,7 +61,16 @@ const Body = () => {
       }
     });
   };
-
+  */
+  const addToCart = (item) => {
+    setCart((prevCart) => {
+      if (!prevCart.some((cartItem) => cartItem.id === item.id)) {
+        return [...prevCart, item];
+      }
+      return prevCart;
+    });
+    console.log("🚀 ~ Body ~ cart:", cart);
+  };
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
   };
