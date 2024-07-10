@@ -10,7 +10,7 @@ const RestaurantCard = ({ resData, addToCart, cart }) => {
   return (
     /*<Link className="col-md-3 card-link" key={id} to={"/product/" + id}>*/
     <div className="mb-4 shadow-sm card">
-      <img className="card-img-top" src={image} alt={title} />
+      <img className="card-img-top " src={image} alt={title} />
       <div className="card-body">
         <p className="card-title">{title?.substring(0, 20)}...</p>
         <p className="card-text">{description?.substring(0, 50)}</p>

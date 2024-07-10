@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
 import ProductDetail from "./components/ProductDetail";
+import ShimmerCards from "./components/ShimmerCards";
 const AboutUs = lazy(() => import("./components/AboutUs"));
 const AppLayout = () => {
   return (
@@ -31,12 +32,16 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <ContactUs />,
+        element: (
+          <Suspense fallback={<ShimmerCards />}>
+            <ContactUs />
+          </Suspense>
+        ),
       },
       {
         path: "/about-us",
         element: (
-          <Suspense fallback={<h1>Loading</h1>}>
+          <Suspense fallback={<ShimmerCards />}>
             <AboutUs />
           </Suspense>
         ),

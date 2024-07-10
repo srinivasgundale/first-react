@@ -157,7 +157,7 @@ const Body = () => {
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
-              <div className="col-md-3 rest-card" key={restaurant.id}>
+              <div className="col-md-4 rest-card" key={restaurant.id}>
                 {restaurant.id === 1 ? (
                   <RestaurantCardPromoted
                     resData={restaurant}

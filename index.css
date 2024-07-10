@@ -96,3 +96,8 @@ a:active {
 .cart-item-image {
   height: 4rem !important;
 }
+.card-img-top {
+  width: 100% !important;
+  height: 15vw !important;
+  object-fit: cover !important;
+}
