@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
 
-const RestaurantCard = ({ resData }) => {
+const RestaurantCard = ({ resData, isSponsored }) => {
   const { category, description, id, image, price, rating, title } =
     resData || {};
   const dispatch = useDispatch();
@@ -30,7 +30,8 @@ const RestaurantCard = ({ resData }) => {
 
   return (
     <div className="mb-4 shadow-sm card">
-      <img className="card-img-top " src={image} alt={title} />
+      {isSponsored && <span className="sponsored-label">Sponsored</span>}
+      <img className="card-img-top" src={image} alt={title} />
       <div className="card-body">
         <p className="card-title">{title?.substring(0, 20)}...</p>
         <p className="card-text">{description?.substring(0, 50)}</p>
@@ -70,12 +71,7 @@ const RestaurantCard = ({ resData }) => {
 
 export const WithPromotedLabel = (RestaurantCard) => {
   return (props) => {
-    return (
-      <>
-        <span className="btn btn-info sponsored-label">Sponsored</span>
-        <RestaurantCard {...props} />
-      </>
-    );
+    return <RestaurantCard {...props} isSponsored={true} />;
   };
 };
 

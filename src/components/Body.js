@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard";
 import ShimmerCards from "./../components/ShimmerCards";
 import useListOfRest from "./../utils/useListOfRest";
@@ -13,7 +13,6 @@ const Body = () => {
   const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
   const [searchText, setSearchText] = useState("");
   const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
@@ -104,7 +103,10 @@ const Body = () => {
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
-              <div className="col-md-4 rest-card" key={restaurant.id}>
+              <div
+                className="col-md-4 d-flex align-items-stretch rest-card"
+                key={restaurant.id}
+              >
                 {restaurant.id === 1 ? (
                   <RestaurantCardPromoted resData={restaurant} />
                 ) : (

@@ -96,8 +96,42 @@ a:active {
 .cart-item-image {
   height: 4rem !important;
 }
-.card-img-top {
+/*.card-img-top {
   width: 100% !important;
   height: 15vw !important;
   object-fit: cover !important;
+}*/
+.card {
+  position: relative; /* Ensure the card is positioned relative to place the label correctly */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title,
+.card-text {
+  margin-bottom: auto;
+}
+
+.sponsored-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #17a2b8;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1; /* Ensure the label is above other elements */
 }
