@@ -4,7 +4,7 @@ import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard";
 import ShimmerCards from "./../components/ShimmerCards";
 import useListOfRest from "./../utils/useListOfRest";
 import useListOfCategories from "./../utils/useListOfCategories";
-
+import { clearCart } from "../utils/cartSlice";
 import CartPopup from "./CartPopup";
 
 const Body = () => {
@@ -95,8 +95,8 @@ const Body = () => {
                 style={{ cursor: "pointer" }}
                 onClick={toggleCartPopup}
               >
-                Cart: {cart.length} item{cart.length !== 1 ? "s" : ""}{" "}
-                <i className="bi bi-cart-fill"></i>
+                <i className="bi bi-cart-fill"></i> {cart.length} item
+                {cart.length !== 1 ? "s" : ""}{" "}
               </span>
             </li>
           </ul>
