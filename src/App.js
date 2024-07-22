@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 
 import Header from "./components/Head";
@@ -13,6 +13,8 @@ import Error from "./components/Error";
 import ProductDetail from "./components/ProductDetail";
 import ShimmerCards from "./components/ShimmerCards";
 const AboutUs = lazy(() => import("./components/AboutUs"));
+import { Provider } from "react-redux";
+import store from "./utils/store";
 const AppLayout = () => {
   return (
     <div className="app">
@@ -54,6 +56,12 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
   },
 ]);
-const root = ReactDOM.createRoot(document.getElementById("mitro"));
+const root = ReactDOM.createRoot(document.getElementById("firstReactApp"));
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(
+  <Provider store={store}>
+    <StrictMode>
+      <RouterProvider router={appRouter} />
+    </StrictMode>
+  </Provider>
+);

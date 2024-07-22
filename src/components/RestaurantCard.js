@@ -1,14 +1,16 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
 
-const RestaurantCard = ({ resData, addToCart, cart }) => {
+const RestaurantCard = ({ resData }) => {
   const { category, description, id, image, price, rating, title } =
     resData || {};
-
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   const isAddedToCart = cart.some((cartItem) => cartItem?.id === id);
 
   return (
-    /*<Link className="col-md-3 card-link" key={id} to={"/product/" + id}>*/
     <div className="mb-4 shadow-sm card">
       <img className="card-img-top " src={image} alt={title} />
       <div className="card-body">
@@ -32,27 +34,24 @@ const RestaurantCard = ({ resData, addToCart, cart }) => {
           onClick={(e) => {
             e.preventDefault();
             if (!isAddedToCart) {
-              addToCart(resData);
+              dispatch(addToCart(resData));
+            } else {
+              dispatch(removeFromCart(resData));
             }
           }}
-          disabled={isAddedToCart}
         >
-          {isAddedToCart ? "Added to Cart" : "Add to Cart"}
+          {isAddedToCart ? "Remove from Cart" : "Add to Cart"}
         </button>
       </div>
     </div>
-    /*</Link>*/
   );
 };
 
-export const WithPromotedLable = (RestaurantCard) => {
+export const WithPromotedLabel = (RestaurantCard) => {
   return (props) => {
-    /*const { resData, addToCart, cart } = props;
-    const { category, description, id, image, price, rating, title } = resData;
-    const isAddedToCart = cart.some((cartItem) => cartItem.id === id);*/
     return (
       <>
-        <span className="btn btn-info sponsed-lable">Sponsored</span>
+        <span className="btn btn-info sponsored-label">Sponsored</span>
         <RestaurantCard {...props} />
       </>
     );

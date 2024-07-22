@@ -1,76 +1,26 @@
-import { useState, useEffect } from "react";
-import RestaurantCard, { WithPromotedLable } from "./RestaurantCard";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard";
 import ShimmerCards from "./../components/ShimmerCards";
 import useListOfRest from "./../utils/useListOfRest";
 import useListOfCategories from "./../utils/useListOfCategories";
-import {
-  saveCartToLocalStorage,
-  loadCartFromLocalStorage,
-} from "./../utils/localStorage";
+
 import CartPopup from "./CartPopup";
 
 const Body = () => {
   const { listOfRest } = useListOfRest();
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const listOfCategories = useListOfCategories();
-  const RestaurantCardPromoted = WithPromotedLable(RestaurantCard);
+  const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
   const [searchText, setSearchText] = useState("");
-  const [cart, setCart] = useState(() => {
-    const savedCart = loadCartFromLocalStorage();
-    return Array.isArray(savedCart) ? savedCart : [];
-  });
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
   }, [listOfRest]);
 
-  useEffect(() => {
-    saveCartToLocalStorage(cart);
-  }, [cart]);
-
-  /*
-  const addToCart = (item) => {
-    if (!item || !item.id) {
-      console.error("Item is undefined or has no id:", item);
-      return;
-    }
-
-    setCart((prevCart) => {
-      if (!Array.isArray(prevCart)) {
-        console.error("Previous cart is not an array:", prevCart);
-        return [];
-      }
-
-      const validCart = prevCart.filter((cartItem) => cartItem && cartItem.id);
-
-      const itemIndex = validCart.findIndex((cartItem) => {
-        if (!cartItem || !cartItem.id) {
-          console.error("Cart item is undefined or has no id:", cartItem);
-          return false; // Skip undefined or invalid cart items
-        }
-        return cartItem.id === item.id;
-      });
-
-      if (itemIndex !== -1) {
-        const updatedCart = [...validCart];
-        updatedCart.splice(itemIndex, 1);
-        return updatedCart;
-      } else {
-        return [...validCart, item];
-      }
-    });
-  };
-  */
-  const addToCart = (item) => {
-    setCart((prevCart) => {
-      if (!prevCart.some((cartItem) => cartItem.id === item.id)) {
-        return [...prevCart, item];
-      }
-      return prevCart;
-    });
-    console.log("🚀 ~ Body ~ cart:", cart);
-  };
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
   };
@@ -120,9 +70,7 @@ const Body = () => {
                       className="form-control mr-sm-2"
                       placeholder="Search"
                       value={searchText}
-                      onChange={(e) => {
-                        setSearchText(e.target.value);
-                      }}
+                      onChange={(e) => setSearchText(e.target.value)}
                     />
                   </div>
                   <button
@@ -159,17 +107,9 @@ const Body = () => {
             {filteredRestaurant.map((restaurant) => (
               <div className="col-md-4 rest-card" key={restaurant.id}>
                 {restaurant.id === 1 ? (
-                  <RestaurantCardPromoted
-                    resData={restaurant}
-                    addToCart={addToCart}
-                    cart={cart}
-                  />
+                  <RestaurantCardPromoted resData={restaurant} />
                 ) : (
-                  <RestaurantCard
-                    resData={restaurant}
-                    addToCart={addToCart}
-                    cart={cart}
-                  />
+                  <RestaurantCard resData={restaurant} />
                 )}
               </div>
             ))}
