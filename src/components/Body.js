@@ -33,7 +33,14 @@ const Body = () => {
       setFilteredRestaurant(filteredList);
     }
   };
-
+  const handleSearch = (e) => {
+    if (e.key === "Enter") {
+      const filteredRestaurant = listOfRest.filter((res) =>
+        res.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredRestaurant(filteredRestaurant);
+    }
+  };
   return listOfRest.length === 0 ? (
     <ShimmerCards />
   ) : (
@@ -54,30 +61,28 @@ const Body = () => {
             </li>
             <li className="nav-item active">
               <a key={"form"} className="nav-link">
-                <form className="form-inline">
-                  <div className="mb-2 form-group mx-sm-3">
-                    <input
-                      type="text"
-                      className="form-control mr-sm-2"
-                      placeholder="Search"
-                      value={searchText}
-                      onChange={(e) => setSearchText(e.target.value)}
-                    />
-                  </div>
-                  <button
-                    className="my-2 btn btn-outline-success my-sm-0 d-none"
-                    onClick={() => {
-                      const filteredRestaurant = listOfRest.filter((res) =>
-                        res.title
-                          .toLowerCase()
-                          .includes(searchText.toLowerCase())
-                      );
-                      setFilteredRestaurant(filteredRestaurant);
-                    }}
-                  >
-                    Search
-                  </button>
-                </form>
+                <div className="mb-2 form-group mx-sm-3">
+                  <input
+                    type="text"
+                    className="form-control mr-sm-2"
+                    placeholder="Search"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    onKeyPress={handleSearch}
+                  />
+                </div>
+                <button
+                  type="button"
+                  className="my-2 btn btn-outline-success my-sm-0 d-none"
+                  onClick={() => {
+                    const filteredRestaurant = listOfRest.filter((res) =>
+                      res.title.toLowerCase().includes(searchText.toLowerCase())
+                    );
+                    setFilteredRestaurant(filteredRestaurant);
+                  }}
+                >
+                  Search
+                </button>
               </a>
             </li>
             <li className="nav-item">
