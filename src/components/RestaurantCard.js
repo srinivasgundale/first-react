@@ -10,6 +10,24 @@ const RestaurantCard = ({ resData }) => {
   const cart = useSelector((state) => state.cart);
   const isAddedToCart = cart.some((cartItem) => cartItem?.id === id);
 
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 !== 0;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+    return (
+      <div>
+        {Array.from({ length: fullStars }, (_, index) => (
+          <i key={index} className="bi bi-star-fill text-warning"></i>
+        ))}
+        {halfStar && <i className="bi bi-star-half text-warning"></i>}
+        {Array.from({ length: emptyStars }, (_, index) => (
+          <i key={fullStars + index} className="bi bi-star text-warning"></i>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="mb-4 shadow-sm card">
       <img className="card-img-top " src={image} alt={title} />
@@ -18,10 +36,13 @@ const RestaurantCard = ({ resData }) => {
         <p className="card-text">{description?.substring(0, 50)}</p>
         <div className="d-flex justify-content-between align-items-center">
           <div className="btn-group">
-            <button type="button" className="btn btn-sm btn-outline-secondary">
-              {rating?.rate} stars
-            </button>
-            <button type="button" className="btn btn-sm btn-outline-secondary">
+            <div className="d-flex align-items-center">
+              {renderStars(rating?.rate)}
+            </div>
+            <button
+              type="button"
+              className="btn btn-sm btn-outline-secondary d-none"
+            >
               {category}
             </button>
           </div>
