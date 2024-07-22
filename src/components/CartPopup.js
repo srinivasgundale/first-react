@@ -37,7 +37,7 @@ const CartPopup = ({ cart, onClose }) => {
                   <div className="row">
                     <div className="col-md-4">
                       <img
-                        src={item.image}
+                        src={item.thumbnail}
                         className="img-fluid cart-item-image"
                         alt={item.title}
                       />

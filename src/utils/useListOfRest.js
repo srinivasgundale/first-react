@@ -6,10 +6,10 @@ const useListOfRest = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    const data = await fetch("https://fakestoreapi.com/products");
+    const data = await fetch("https://dummyjson.com/products");
     const json = await data.json();
-    console.log("🚀 ~ useListOfRest ~ fetchData ~ json:", json);
-    setListOfRestraunt(json);
+    console.log("🚀 ~ useListOfRest ~ fetchData ~ json:", json.products);
+    setListOfRestraunt(json.products);
   };
   return { listOfRest };
 };

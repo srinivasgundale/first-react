@@ -6,9 +6,7 @@ const useListOfCategories = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    const category = await fetch(
-      "https://fakestoreapi.com/products/categories"
-    );
+    const category = await fetch("https://dummyjson.com/products/categories");
 
     const categoryJson = await category.json();
     console.log("🚀 ~ fetchData ~ categoryJson:", categoryJson);

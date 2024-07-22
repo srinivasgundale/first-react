@@ -4,7 +4,7 @@ import { addToCart, removeFromCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
 
 const RestaurantCard = ({ resData, isSponsored }) => {
-  const { category, description, id, image, price, rating, title } =
+  const { category, description, id, image, price, rating, title, thumbnail } =
     resData || {};
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -31,7 +31,7 @@ const RestaurantCard = ({ resData, isSponsored }) => {
   return (
     <div className="mb-4 shadow-sm card">
       {isSponsored && <span className="sponsored-label">Sponsored</span>}
-      <img className="card-img-top" src={image} alt={title} />
+      <img className="card-img-top" src={thumbnail} alt={title} />
       <div className="card-body">
         <p className="card-title">{title?.substring(0, 20)}...</p>
         <p className="card-text">{description?.substring(0, 50)}</p>

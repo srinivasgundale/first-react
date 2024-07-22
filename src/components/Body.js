@@ -23,6 +23,17 @@ const Body = () => {
     setIsCartOpen((prevState) => !prevState);
   };
 
+  const handleSelect = (event) => {
+    const slug = event.target.value;
+    if (slug === "top-products") {
+      const filteredList = listOfRest.filter((res) => res.rating.rate >= 4);
+      setFilteredRestaurant(filteredList);
+    } else {
+      const filteredList = listOfRest.filter((res) => res.category === slug);
+      setFilteredRestaurant(filteredList);
+    }
+  };
+
   return listOfRest.length === 0 ? (
     <ShimmerCards />
   ) : (
@@ -30,34 +41,16 @@ const Body = () => {
       <div className="body">
         <nav className="navbar navbar-expand-lg navbar-light">
           <ul className="mr-auto navbar-nav">
-            {listOfCategories.map((cat, index) => (
-              <li className="nav-item active" key={index}>
-                <a
-                  className="nav-link"
-                  onClick={() => {
-                    const filteredList = listOfRest.filter(
-                      (res) => res.category === cat
-                    );
-                    setFilteredRestaurant(filteredList);
-                  }}
-                >
-                  {cat.toUpperCase()}
-                </a>
-              </li>
-            ))}
             <li className="nav-item">
-              <a
-                key={"all"}
-                className="nav-link"
-                onClick={() => {
-                  const filteredList = listOfRest.filter(
-                    (res) => res.rating.rate >= 4
-                  );
-                  setFilteredRestaurant(filteredList);
-                }}
-              >
-                TOP PRODUCTS
-              </a>
+              <select className="form-select" onChange={handleSelect}>
+                <option value="">Select Category</option>
+                {listOfCategories.map((cat, index) => (
+                  <option key={index} value={cat.slug}>
+                    {cat.name}
+                  </option>
+                ))}
+                <option value="top-products">TOP PRODUCTS</option>
+              </select>
             </li>
             <li className="nav-item active">
               <a key={"form"} className="nav-link">
