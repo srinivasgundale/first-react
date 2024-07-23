@@ -41,7 +41,7 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
-                  <i class="bi bi-person-circle"></i>
+                  <i className="bi bi-person-circle"></i>
                 </Link>
               </li>
 

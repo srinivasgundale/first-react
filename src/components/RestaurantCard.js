@@ -7,8 +7,8 @@ const RestaurantCard = ({ resData, isSponsored }) => {
   const { category, description, id, image, price, rating, title, thumbnail } =
     resData || {};
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-  const isAddedToCart = cart.some((cartItem) => cartItem?.id === id);
+  const cartItems = useSelector((state) => state.cart.items); // Ensure cart is an array
+  const isAddedToCart = cartItems.some((cartItem) => cartItem?.id === id);
 
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -58,7 +58,7 @@ const RestaurantCard = ({ resData, isSponsored }) => {
             if (!isAddedToCart) {
               dispatch(addToCart(resData));
             } else {
-              dispatch(removeFromCart(resData));
+              dispatch(removeFromCart({ id }));
             }
           }}
         >

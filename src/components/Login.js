@@ -43,7 +43,7 @@ const Login = () => {
           <input
             type="text"
             className="form-control"
-            value={username}
+            value={username ?? "emilys"}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
@@ -53,7 +53,7 @@ const Login = () => {
           <input
             type="password"
             className="form-control"
-            value={password}
+            value={password ?? "emilyspass"}
             onChange={(e) => setPassword(e.target.value)}
             required
           />

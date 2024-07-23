@@ -1,9 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { removeFromCart, clearCart } from "../utils/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart, clearCart, updateQuantity } from "../utils/cartSlice";
 
-const CartPopup = ({ cart, onClose }) => {
+const CartPopup = ({ onClose }) => {
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeFromCart({ id }));
@@ -11,6 +12,12 @@ const CartPopup = ({ cart, onClose }) => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+
+  const handleQuantityChange = (id, quantity) => {
+    if (quantity >= 1) {
+      dispatch(updateQuantity({ id, quantity }));
+    }
   };
 
   return (
@@ -29,10 +36,10 @@ const CartPopup = ({ cart, onClose }) => {
             </button>
           </div>
           <div className="modal-body">
-            {cart.length === 0 ? (
+            {cartItems.length === 0 ? (
               <p>Your cart is empty.</p>
             ) : (
-              cart.map((item) => (
+              cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
                   <div className="row">
                     <div className="col-md-4">
@@ -45,9 +52,30 @@ const CartPopup = ({ cart, onClose }) => {
                     <div className="col-md-8">
                       <p>{item.title}</p>
                       <p>₹{item.price}</p>
+                      <div className="d-flex align-items-center">
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                          onClick={() =>
+                            handleQuantityChange(item.id, item.quantity - 1)
+                          }
+                        >
+                          -
+                        </button>
+                        <span className="mx-2">{item.quantity}</span>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                          onClick={() =>
+                            handleQuantityChange(item.id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </button>
+                      </div>
                       <button
                         type="button"
-                        className="btn btn-danger btn-sm"
+                        className="mt-2 btn btn-danger btn-sm"
                         onClick={() => handleRemoveFromCart(item.id)}
                       >
                         Remove
@@ -59,7 +87,7 @@ const CartPopup = ({ cart, onClose }) => {
             )}
           </div>
           <div className="modal-footer">
-            {cart.length > 0 && (
+            {cartItems.length > 0 && (
               <button
                 type="button"
                 className="btn btn-danger"
