@@ -91,7 +91,7 @@ const Body = () => {
                 style={{ cursor: "pointer" }}
                 onClick={toggleCartPopup}
               >
-                <i className="bi bi-cart-fill"></i> {cart.length} item
+                <i className="bi bi-cart-fill"></i> {cart.items.length} item
                 {cart.length !== 1 ? "s" : ""}{" "}
               </span>
             </li>
