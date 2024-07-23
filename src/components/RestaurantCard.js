@@ -38,7 +38,7 @@ const RestaurantCard = ({ resData, isSponsored }) => {
         <div className="d-flex justify-content-between align-items-center">
           <div className="btn-group">
             <div className="d-flex align-items-center">
-              {renderStars(rating?.rate)}
+              {renderStars(rating)}
             </div>
             <button
               type="button"

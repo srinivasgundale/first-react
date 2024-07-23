@@ -4,18 +4,26 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 // components takes precedence over default styles.
 import React, { lazy, Suspense, StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { Provider, useSelector } from "react-redux";
+import store from "./utils/store";
 import Header from "./components/Head";
 import Body from "./components/Body";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-//import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
 import ProductDetail from "./components/ProductDetail";
 import ShimmerCards from "./components/ShimmerCards";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
 const AboutUs = lazy(() => import("./components/AboutUs"));
-import { Provider } from "react-redux";
-import store from "./utils/store";
+
 const AppLayout = () => {
   return (
     <div className="app">
@@ -24,6 +32,12 @@ const AppLayout = () => {
     </div>
   );
 };
+
+const PrivateRoute = ({ element: Element, ...rest }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  return isAuthenticated ? <Element {...rest} /> : <Navigate to="/login" />;
+};
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -31,13 +45,13 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <PrivateRoute element={Body} />,
       },
       {
         path: "/contact",
         element: (
           <Suspense fallback={<ShimmerCards />}>
-            <ContactUs />
+            <PrivateRoute element={ContactUs} />
           </Suspense>
         ),
       },
@@ -45,18 +59,27 @@ const appRouter = createBrowserRouter([
         path: "/about-us",
         element: (
           <Suspense fallback={<ShimmerCards />}>
-            <AboutUs />
+            <PrivateRoute element={AboutUs} />
           </Suspense>
         ),
       },
       {
         path: "/product/:id",
-        element: <ProductDetail />,
+        element: <PrivateRoute element={ProductDetail} />,
+      },
+      {
+        path: "/profile", // Add the profile route
+        element: <PrivateRoute element={Profile} />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
     errorElement: <Error />,
   },
 ]);
+
 const root = ReactDOM.createRoot(document.getElementById("firstReactApp"));
 
 root.render(

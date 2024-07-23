@@ -26,7 +26,7 @@ const Body = () => {
   const handleSelect = (event) => {
     const slug = event.target.value;
     if (slug === "top-products") {
-      const filteredList = listOfRest.filter((res) => res.rating.rate >= 4);
+      const filteredList = listOfRest.filter((res) => res.rating >= 4);
       setFilteredRestaurant(filteredList);
     } else {
       const filteredList = listOfRest.filter((res) => res.category === slug);
