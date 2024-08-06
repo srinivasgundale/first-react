@@ -123,7 +123,7 @@ const Body = () => {
                 </button>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item d-none">
               <span
                 className="navbar-text"
                 style={{ cursor: "pointer" }}

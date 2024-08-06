@@ -1,6 +1,7 @@
 //rafc shrtcut to create component layout
 import { React, Component } from "react";
 import UserClass from "./../components/UserClass";
+import ShimmerCards from "./../components/ShimmerCards";
 class AboutUs extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,7 @@ class AboutUs extends Component {
     console.log("🚀 ~ AboutUs ~ render ~ render:");
     console.log("🚀 ~ AboutUs ~ render ~ state:", this.state.users);
 
-    return (
+    return this.state.users.length === 0 ? (<ShimmerCards />) : (
       <div className="container">
         <div className="flex flex-nowarap row">
           {this.state.users.map((user) => (
