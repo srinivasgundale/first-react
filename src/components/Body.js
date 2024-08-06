@@ -64,9 +64,7 @@ const Body = () => {
     setFilteredRestaurant(json.products);
     console.log("🚀 ~ fetchFirstProduct ~ json:", json)
   }
-  return listOfRest.length === 0 ? (
-    <ShimmerCards />
-  ) : (
+  return  (
     <main role="main" className="container">
       <div className="body">
         <nav className="navbar navbar-expand-lg navbar-light">
@@ -136,6 +134,7 @@ const Body = () => {
           </ul>
         </nav>
         <br />
+        { listOfRest.length === 0 ? (<ShimmerCards />)  : (
         <div className="container">
           <div className="row">
             {filteredRestaurant.map((restaurant) => (
@@ -152,6 +151,7 @@ const Body = () => {
             ))}
           </div>
         </div>
+        ) }
         {isCartOpen && <CartPopup cart={cart} onClose={toggleCartPopup} />}
       </div>
     </main>
