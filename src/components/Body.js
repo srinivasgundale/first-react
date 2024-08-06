@@ -5,17 +5,18 @@ import ShimmerCards from "./../components/ShimmerCards";
 import useListOfRest from "./../utils/useListOfRest";
 import useListOfCategories from "./../utils/useListOfCategories";
 import CartPopup from "./CartPopup";
+import Filter from "./Filter";
 
 const Body = () => {
   const { listOfRest } = useListOfRest();
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   //const [searchFilteredRestaurant, setSearchFilteredRestaurant] = useState([]);
-  const listOfCategories = useListOfCategories();
+  //const listOfCategories = useListOfCategories();
   const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
   const [searchText, setSearchText] = useState("");
   const cart = useSelector((state) => state.cart);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [searchTextNew, setSearchTextNew] = useState("TEST");
+  //const [searchTextNew, setSearchTextNew] = useState("TEST");
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
     //setSearchFilteredRestaurant(listOfRest)
@@ -28,8 +29,21 @@ const Body = () => {
     setIsCartOpen((prevState) => !prevState);
   };
 
-  const handleSelect = (event) => {
-    const slug = event.target.value;
+  // const handleSelect = (event) => {
+  //   const slug = event.target.value;
+  //   if (slug === "top-products") {
+  //     const filteredList = listOfRest.filter((res) => res.rating >= 4);
+  //     setFilteredRestaurant(filteredList);
+  //   } else {
+  //     const filteredList = listOfRest.filter((res) => res.category === slug);
+  //     setFilteredRestaurant(filteredList);
+  //   }
+  // };
+  const handleSearchText = (val) => {
+    setSearchText(val);
+  }
+  const handleSelectNew = (val) => {
+    const slug = val;
     if (slug === "top-products") {
       const filteredList = listOfRest.filter((res) => res.rating >= 4);
       setFilteredRestaurant(filteredList);
@@ -38,7 +52,16 @@ const Body = () => {
       setFilteredRestaurant(filteredList);
     }
   };
-  const handleSearch = (e) => {
+  // const handleSearch = (e) => {
+  //   if (e.key === "Enter") {
+  //     const filteredRestaurant = listOfRest.filter((res) =>
+  //       res.title.toLowerCase().includes(searchText.toLowerCase())
+  //     );
+  //     //searchProduct();
+  //     setFilteredRestaurant(filteredRestaurant);
+  //   }
+  // };
+  const handleSearchNew = (e) => {
     if (e.key === "Enter") {
       const filteredRestaurant = listOfRest.filter((res) =>
         res.title.toLowerCase().includes(searchText.toLowerCase())
@@ -47,17 +70,17 @@ const Body = () => {
       setFilteredRestaurant(filteredRestaurant);
     }
   };
-  const onChangeInput = (e) => {
-    setSearchTextNew(e);
-  };
-  const searchRestWithName = (text) => {
-    console.log("🚀 ~ searchRestWithName ~ text:", text)
-    console.log("🚀 ~ searchRestWithName ~ text:", listOfRest)
-    const filteredRestaurant = listOfRest.filter((res) =>
-      res.title.toLowerCase().includes(text.toLowerCase())
-    );
-    setFilteredRestaurant(filteredRestaurant);
-  };
+  // const onChangeInput = (e) => {
+  //   setSearchTextNew(e);
+  // };
+  // const searchRestWithName = (text) => {
+  //   console.log("🚀 ~ searchRestWithName ~ text:", text)
+  //   console.log("🚀 ~ searchRestWithName ~ text:", listOfRest)
+  //   const filteredRestaurant = listOfRest.filter((res) =>
+  //     res.title.toLowerCase().includes(text.toLowerCase())
+  //   );
+  //   setFilteredRestaurant(filteredRestaurant);
+  // };
   async function searchProduct () {
     const data = await fetch('https://dummyjson.com/products/search?q='+searchText)
     const json = await data.json()
@@ -68,7 +91,7 @@ const Body = () => {
     <main role="main" className="container">
       <div className="body">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <ul className="mr-auto navbar-nav">
+          {/* <ul className="mr-auto navbar-nav">
             <li className="nav-item">
               <select className="form-select" onChange={handleSelect}>
                 <option value="">Select Category</option>
@@ -131,8 +154,9 @@ const Body = () => {
                 {cart.length !== 1 ? "s" : ""}{" "}
               </span>
             </li>
-          </ul>
+          </ul> */}
         </nav>
+        <Filter setData={handleSelectNew} setSearchInput={handleSearchText} setHandleSearch={handleSearchNew} /> 
         <br />
         { listOfRest.length === 0 ? (<ShimmerCards />)  : (
         <div className="container">
