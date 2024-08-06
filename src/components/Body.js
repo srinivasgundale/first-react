@@ -9,16 +9,21 @@ import CartPopup from "./CartPopup";
 const Body = () => {
   const { listOfRest } = useListOfRest();
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  //const [searchFilteredRestaurant, setSearchFilteredRestaurant] = useState([]);
   const listOfCategories = useListOfCategories();
   const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
   const [searchText, setSearchText] = useState("");
   const cart = useSelector((state) => state.cart);
   const [isCartOpen, setIsCartOpen] = useState(false);
-
+  const [searchTextNew, setSearchTextNew] = useState("TEST");
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
+    //setSearchFilteredRestaurant(listOfRest)
   }, [listOfRest]);
-
+  useEffect(() =>{
+    console.log("calling use effect when searchtext changes");
+    searchProduct();
+  },[searchText])
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
   };
@@ -38,9 +43,27 @@ const Body = () => {
       const filteredRestaurant = listOfRest.filter((res) =>
         res.title.toLowerCase().includes(searchText.toLowerCase())
       );
+      //searchProduct();
       setFilteredRestaurant(filteredRestaurant);
     }
   };
+  const onChangeInput = (e) => {
+    setSearchTextNew(e);
+  };
+  const searchRestWithName = (text) => {
+    console.log("🚀 ~ searchRestWithName ~ text:", text)
+    console.log("🚀 ~ searchRestWithName ~ text:", listOfRest)
+    const filteredRestaurant = listOfRest.filter((res) =>
+      res.title.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredRestaurant(filteredRestaurant);
+  };
+  async function searchProduct () {
+    const data = await fetch('https://dummyjson.com/products/search?q='+searchText)
+    const json = await data.json()
+    setFilteredRestaurant(json.products);
+    console.log("🚀 ~ fetchFirstProduct ~ json:", json)
+  }
   return listOfRest.length === 0 ? (
     <ShimmerCards />
   ) : (
@@ -70,6 +93,14 @@ const Body = () => {
                     onChange={(e) => setSearchText(e.target.value)}
                     onKeyPress={handleSearch}
                   />
+                  <input
+                    type="text"
+                    className="form-control mr-sm-2 d-none"
+                    placeholder="Search"
+                    value={searchTextNew}
+                    onChange={ (e) => setSearchTextNew(e.target.value)}
+                    
+                  />
                 </div>
                 <button
                   type="button"
@@ -80,6 +111,13 @@ const Body = () => {
                     );
                     setFilteredRestaurant(filteredRestaurant);
                   }}
+                >
+                  Search
+                </button>
+                <button
+                  type="button"
+                  className="my-2 btn btn-outline-success my-sm-0 d-none"
+                  onClick={() => searchRestWithName(searchTextNew)}
                 >
                   Search
                 </button>
