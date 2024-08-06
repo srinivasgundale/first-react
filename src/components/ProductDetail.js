@@ -11,10 +11,10 @@ const ProductDetail = () => {
         fetchData();
     },[]);
     const fetchData = async () => {
-        const data = await fetch("https://fakestoreapi.com/products/"+id);
+        const data = await fetch("https://dummyjson.com/products/"+id);
 
         const json = await data.json();
-        console.log("🚀 ~ fetchData ~ json:", json);
+        console.log("🚀 ~ fetchData ~ json:", json.products);
         
         // Optional Chaining
         setProductDetail(json);

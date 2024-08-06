@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard";
 import ShimmerCards from "./../components/ShimmerCards";
 import useListOfRest from "./../utils/useListOfRest";
-import useListOfCategories from "./../utils/useListOfCategories";
+//import useListOfCategories from "./../utils/useListOfCategories";
 import CartPopup from "./CartPopup";
 import Filter from "./Filter";
 
@@ -16,6 +16,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const cart = useSelector((state) => state.cart);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [quote, setQuote] = useState("");
   //const [searchTextNew, setSearchTextNew] = useState("TEST");
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
@@ -24,7 +25,16 @@ const Body = () => {
   useEffect(() =>{
     console.log("calling use effect when searchtext changes");
     searchProduct();
-  },[searchText])
+  },[searchText]);
+  useEffect(()=> {
+    fetchRandomQuote();
+  },[]);
+  async function fetchRandomQuote() {
+    const data = await fetch('https://dummyjson.com/quotes/random')
+    const json = await data.json()
+    setQuote(json);
+    
+  }
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
   };
@@ -89,6 +99,10 @@ const Body = () => {
   }
   return  (
     <main role="main" className="container">
+      <blockquote class="blockquote text-right">
+        <p className="mb-0 ">{quote.quote} </p> 
+        <footer className="blockquote-footer mt-2"> <cite title="Source Title">{quote.author}</cite></footer>
+      </blockquote>
       <div className="body">
         <nav className="navbar navbar-expand-lg navbar-light">
           {/* <ul className="mr-auto navbar-nav">
