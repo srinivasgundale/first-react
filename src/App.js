@@ -1,5 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import $ from 'jquery'; 
+import Popper from 'popper.js'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import React, { lazy, Suspense, StrictMode } from "react";
@@ -15,6 +18,7 @@ import {
 import { Provider, useSelector } from "react-redux";
 import store from "./utils/store";
 import Header from "./components/Head";
+import Footer from "./components/Footer";
 import Body from "./components/Body";
 import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
@@ -29,6 +33,7 @@ const AppLayout = () => {
     <div className="app">
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 };

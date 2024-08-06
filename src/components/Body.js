@@ -16,7 +16,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const cart = useSelector((state) => state.cart);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [quote, setQuote] = useState("");
+ 
   //const [searchTextNew, setSearchTextNew] = useState("TEST");
   useEffect(() => {
     setFilteredRestaurant(listOfRest);
@@ -26,15 +26,7 @@ const Body = () => {
     console.log("calling use effect when searchtext changes");
     searchProduct();
   },[searchText]);
-  useEffect(()=> {
-    fetchRandomQuote();
-  },[]);
-  async function fetchRandomQuote() {
-    const data = await fetch('https://dummyjson.com/quotes/random')
-    const json = await data.json()
-    setQuote(json);
-    
-  }
+  
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
   };
@@ -99,10 +91,7 @@ const Body = () => {
   }
   return  (
     <main role="main" className="container">
-      <blockquote class="blockquote text-right">
-        <p className="mb-0 ">{quote.quote} </p> 
-        <footer className="blockquote-footer mt-2"> <cite title="Source Title">{quote.author}</cite></footer>
-      </blockquote>
+      
       <div className="body">
         <nav className="navbar navbar-expand-lg navbar-light">
           {/* <ul className="mr-auto navbar-nav">
@@ -173,11 +162,11 @@ const Body = () => {
         <Filter setData={handleSelectNew} setSearchInput={handleSearchText} setHandleSearch={handleSearchNew} /> 
         <br />
         { listOfRest.length === 0 ? (<ShimmerCards />)  : (
-        <div className="container">
-          <div className="row">
+        <div className="fade-in container">
+          <div className="card-deck row">
             {filteredRestaurant.map((restaurant) => (
               <div
-                className="col-md-4 d-flex align-items-stretch rest-card"
+                className="col-xs-12 col-sm-6 col-md-4 rest-card"
                 key={restaurant.id}
               >
                 {restaurant.id === 1 ? (

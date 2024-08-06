@@ -33,10 +33,8 @@ const Filter = ({setData, setSearchInput, setHandleSearch}) => {
                 <option value="top-products">TOP PRODUCTS</option>
               </select>
             </li>
-            <li className="nav-item active">
-              <a key={"form"} className="nav-link">
-                <div className="mb-2 form-group mx-sm-3">
-                  <input
+            <li className="ml-5 nav-item">
+                <input
                     type="text"
                     className="form-control mr-sm-2"
                     placeholder="Search"
@@ -44,6 +42,9 @@ const Filter = ({setData, setSearchInput, setHandleSearch}) => {
                     onChange= {(e) => handleOnChange(e.target.value)}
                     onKeyPress={handleSearch}
                   />
+              <a key={"form"} className="nav-link d-none">
+                <div className="mb-2 form-group mx-sm-3">
+                  
                   
                 </div>
                 <button

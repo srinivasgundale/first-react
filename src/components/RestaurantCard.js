@@ -29,6 +29,7 @@ const RestaurantCard = ({ resData, isSponsored }) => {
   };
 
   return (
+    
     <div className="mb-4 shadow-sm card">
       {isSponsored && <span className="sponsored-label">Sponsored</span>}
       <img className="card-img-top" src={thumbnail} alt={title} />
@@ -66,6 +67,7 @@ const RestaurantCard = ({ resData, isSponsored }) => {
         </button>
       </div>
     </div>
+    
   );
 };
 
