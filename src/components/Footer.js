@@ -14,7 +14,7 @@ const Footer = () => {
         <>
         
         <div className="container">
-        <blockquote class="fade-in blockquote text-right">
+        <blockquote className="fade-in blockquote text-right">
             <p className="mb-0 ">{quote.quote} </p> 
             <footer className="blockquote-footer mt-2"> <cite title="Source Title">{quote.author}</cite></footer>
         </blockquote>
