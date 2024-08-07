@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../utils/cartSlice";
+import { addToCart, removeFromCart } from "../../store/cartSlice";
 import { Link } from "react-router-dom";
 
 const RestaurantCard = ({ resData, isSponsored }) => {

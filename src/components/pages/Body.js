@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
-import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard";
-import ShimmerCards from "./../components/ShimmerCards";
-import useListOfRest from "./../utils/useListOfRest";
-import CartPopup from "./CartPopup";
-import Filter from "./Filter";
-import useDebounce from './../utils/useDebounce';
+import RestaurantCard, { WithPromotedLabel } from "../includes/RestaurantCard";
+import ShimmerCards from "../common/ShimmerCards";
+import useListOfRest from "../../services/useListOfRest";
+import CartPopup from "../includes/CartPopup";
+import Filter from "../includes/Filter";
+import useDebounce from '../../hooks/useDebounce';
 
 const Body = () => {
   const { listOfRest } = useListOfRest();

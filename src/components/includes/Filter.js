@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useListOfCategories from "./../utils/useListOfCategories";
+import useListOfCategories from "../../services/useListOfCategories";
 
 const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
   const listOfCategories = useListOfCategories();

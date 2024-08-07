@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, clearCart, updateQuantity } from "../utils/cartSlice";
+import { removeFromCart, clearCart, updateQuantity } from "../../store/cartSlice";
 
 const CartPopup = ({ onClose }) => {
   const dispatch = useDispatch();

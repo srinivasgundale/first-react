@@ -1,7 +1,7 @@
 //rafc shrtcut to create component layout
 import { React, Component } from "react";
-import UserClass from "./../components/UserClass";
-import ShimmerCards from "./../components/ShimmerCards";
+import UserClass from "../../components/UserClass";
+import ShimmerCards from "../common/ShimmerCards";
 class AboutUs extends Component {
   constructor(props) {
     super(props);

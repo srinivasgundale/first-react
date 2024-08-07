@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../utils/authSlice";
+import { login } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
