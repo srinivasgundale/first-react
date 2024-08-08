@@ -9,7 +9,12 @@ import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import ShimmerCards from "../common/ShimmerCards";
-
+import { Cart } from "../pages/Cart";
+import Signup from "../pages/Signup";
+import Orders from "../pages/Orders";
+import CheckoutPage from "../pages/CheckoutPage";
+import PaymentPage from "../pages/PaymentPage";
+//import OrderSuccessPage from "../pages/OrderSuccessPage";
 const AboutUs = lazy(() => import("../pages/AboutUs"));
 
 const appRouter = createBrowserRouter([
@@ -17,6 +22,14 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign-up",
+        element: <Signup />,
+      },
       {
         path: "/",
         element: <PrivateRoute element={Body} />,
@@ -45,10 +58,27 @@ const appRouter = createBrowserRouter([
         path: "/profile",
         element: <PrivateRoute element={Profile} />,
       },
+      ,
       {
-        path: "/login",
-        element: <Login />,
+        path: "/cart",
+        element: <PrivateRoute element={Cart} />,
       },
+      {
+        path: "/orders",
+        element: <PrivateRoute element={Orders} />,
+      },
+      {
+        path: "/checkout",
+        element: <PrivateRoute element={CheckoutPage} />,
+      },
+      {
+        path: "/pay",
+        element: <PrivateRoute element={PaymentPage} />,
+      },
+      // {
+      //   path: "/order-success",
+      //   element: <PrivateRoute element={OrderSuccessPage} />,
+      // },
     ],
     errorElement: <Error />,
   },

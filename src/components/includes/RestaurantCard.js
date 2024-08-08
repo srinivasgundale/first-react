@@ -68,11 +68,13 @@ const RestaurantCard = ({ resData, isSponsored }) => {
     //   </div>
     // </div>
     <>
+      <Link to={"/product/"+id} >
       <figure>
         <img
           src={thumbnail}
           alt={title} loading="lazy" />
       </figure>
+      </Link>
       <div className="card-body">
         <h2 className="card-title">{title?.substring(0, 20)}...</h2>
         <p>{description?.substring(0, 50)}</p>

@@ -11,10 +11,14 @@ const Header = () => {
     dispatch(logout());
   };
   const cart = useSelector((state) => state.cart);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalPrice = cartItems.reduce((total, item) => {
+      return total + item.price * item.quantity;
+  }, 0).toFixed(2);
+  /*const [isCartOpen, setIsCartOpen] = useState(false);
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
-  };
+  };*/
   return (
     <>
     
@@ -92,9 +96,9 @@ const Header = () => {
               className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
               <div className="card-body">
                 <span className="text-lg font-bold">{cart.items.length} Item{cart.length !== 1 ? "s" : ""}{" "}</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="text-info">Subtotal: ₹{totalPrice}</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">View cart</button>
+                  <Link to="/cart"><button className="btn btn-primary btn-block">View cart</button></Link>
                 </div>
               </div>
             </div>
