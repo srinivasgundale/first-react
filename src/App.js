@@ -1,7 +1,7 @@
 // src/index.js
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap-icons/font/bootstrap-icons.css";
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import React from "react";
