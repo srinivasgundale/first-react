@@ -14,7 +14,7 @@ import Signup from "../pages/Signup";
 import Orders from "../pages/Orders";
 import CheckoutPage from "../pages/CheckoutPage";
 import PaymentPage from "../pages/PaymentPage";
-//import OrderSuccessPage from "../pages/OrderSuccessPage";
+import OrderSuccessPage from "../pages/OrderSuccessPage";
 const AboutUs = lazy(() => import("../pages/AboutUs"));
 
 const appRouter = createBrowserRouter([
@@ -75,10 +75,10 @@ const appRouter = createBrowserRouter([
         path: "/pay",
         element: <PrivateRoute element={PaymentPage} />,
       },
-      // {
-      //   path: "/order-success",
-      //   element: <PrivateRoute element={OrderSuccessPage} />,
-      // },
+      {
+        path: "/order-success",
+        element: <PrivateRoute element={OrderSuccessPage} />,
+      },
     ],
     errorElement: <Error />,
   },
