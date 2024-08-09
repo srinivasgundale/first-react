@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext  } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 import CartPopup from "../includes/CartPopup";
+import CartContext from "../../context/CartContext";
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -15,6 +16,12 @@ const Header = () => {
   const totalPrice = cartItems.reduce((total, item) => {
       return total + item.price * item.quantity;
   }, 0).toFixed(2);
+  const {cartItemsList, setCartItemsList} = useContext(CartContext);
+  const handleCartContext = (e) => {
+    e.preventDefault();
+    setCartItemsList({cartItems});
+    console.log(cartItemsList?.cartItems.length)
+  }
   /*const [isCartOpen, setIsCartOpen] = useState(false);
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
@@ -53,7 +60,7 @@ const Header = () => {
             <li><Link className={location.pathname === '/about-us' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/about-us">About</Link></li>
           </ul>
         </div>
-        <Link className="btn btn-ghost text-x" aria-current="page" to="/">PrimeHub</Link>
+        <Link className="btn btn-ghost text-x" aria-current="page" to="/">PrimeHub </Link>
         
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -123,7 +130,7 @@ const Header = () => {
                   <span className="badge">New</span>
                 </Link>
               </li>
-              <li><a>Settings</a></li>
+              <li><a onClick={handleCartContext}>Settings</a></li>
               
               <li><a onClick={handleLogout}>Logout</a></li>
               </> ) : (<li><Link className="justify-between" to="/login">Login</Link></li>) } 

@@ -11,12 +11,15 @@ import store from "./store/store";
 import AppRouter from "./components/routes/AppRouter";
 import { StrictMode } from "react";
 
+import CartContextProvider from "./context/CartContextProvider";
 const root = ReactDOM.createRoot(document.getElementById("firstReactApp"));
 
 root.render(
   <Provider store={store}>
+    <CartContextProvider>
     <StrictMode>
       <AppRouter />
     </StrictMode>
+    </CartContextProvider>
   </Provider>
 );
