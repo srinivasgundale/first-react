@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 import CartPopup from "../includes/CartPopup";
-import CartContext from "../../context/CartContext";
+import ThemeContext from "../../context/ThemeContext";
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -16,12 +16,16 @@ const Header = () => {
   const totalPrice = cartItems.reduce((total, item) => {
       return total + item.price * item.quantity;
   }, 0).toFixed(2);
-  const {cartItemsList, setCartItemsList} = useContext(CartContext);
-  const handleCartContext = (e) => {
-    e.preventDefault();
-    setCartItemsList({cartItems});
-    console.log(cartItemsList?.cartItems.length)
-  }
+  const {themeMode, setThememode} = useContext(ThemeContext);
+  
+  
+  
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    htmlElement.setAttribute('data-theme', themeMode ? 'dark' : 'light');
+    setThememode(themeMode);
+    
+  }, [themeMode]);
   /*const [isCartOpen, setIsCartOpen] = useState(false);
   const toggleCartPopup = () => {
     setIsCartOpen((prevState) => !prevState);
@@ -130,7 +134,16 @@ const Header = () => {
                   <span className="badge">New</span>
                 </Link>
               </li>
-              <li><a onClick={handleCartContext}>Settings</a></li>
+              <li><a >
+              <input
+                type="checkbox"
+                checked={themeMode}
+                onChange={() => setThememode(!themeMode)}
+                className="toggle theme-controller"
+              />
+              {/* <input type="checkbox"  checked={isSynthwave} className="toggle theme-controller" onClick={handleThemeContext} /> */}
+                </a>
+              </li>
               
               <li><a onClick={handleLogout}>Logout</a></li>
               </> ) : (<li><Link className="justify-between" to="/login">Login</Link></li>) } 

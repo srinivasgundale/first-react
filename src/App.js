@@ -11,15 +11,15 @@ import store from "./store/store";
 import AppRouter from "./components/routes/AppRouter";
 import { StrictMode } from "react";
 
-import CartContextProvider from "./context/CartContextProvider";
+import ThemeContextProvider from "./context/ThemeContextProvider";
 const root = ReactDOM.createRoot(document.getElementById("firstReactApp"));
 
 root.render(
   <Provider store={store}>
-    <CartContextProvider>
+    <ThemeContextProvider>
     <StrictMode>
       <AppRouter />
     </StrictMode>
-    </CartContextProvider>
+    </ThemeContextProvider>
   </Provider>
 );
