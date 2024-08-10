@@ -21,7 +21,7 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
   };
 
   return (
-    <div className="w-1/4 bg-gray-100 p-4 rounded-lg shadow-md">
+    <div className="w-1/4 bg-gray-100 p-4 rounded-lg shadow-md h-full">
       <h2 className="text-xl font-bold mb-4">Filters</h2>
       <div className="mb-4">
         <label className="block mb-2">Category</label>

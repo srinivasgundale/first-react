@@ -22,7 +22,7 @@ const Header = () => {
   
   useEffect(() => {
     const htmlElement = document.documentElement;
-    htmlElement.setAttribute('data-theme', themeMode ? 'dark' : 'light');
+    htmlElement.setAttribute('data-theme', themeMode ? 'dark' : 'cyberpunk');
     setThememode(themeMode);
     
   }, [themeMode]);
@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <>
     
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-neutral text-neutral-content items-center">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,7 +52,7 @@ const Header = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
             <li><Link className={location.pathname === '/' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/">Home</Link></li>
             {/* <li>
               <a>Parent</a>
@@ -104,7 +104,7 @@ const Header = () => {
             </div>
             <div
               tabIndex={0}
-              className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
+              className="card card-compact dropdown-content bg-neutral text-neutral-content z-[1] mt-3 w-52 shadow">
               <div className="card-body">
                 <span className="text-lg font-bold">{cart.items.length} Item{cart.length !== 1 ? "s" : ""}{" "}</span>
                 <span className="text-info">Subtotal: ₹{totalPrice}</span>
@@ -124,7 +124,7 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 {isAuthenticated ? (
                   <>
               <li>
