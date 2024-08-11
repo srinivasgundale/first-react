@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import useListOfCategories from "../../services/useListOfCategories";
 
 const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
   const listOfCategories = useListOfCategories();
   const [searchText, setSearchText] = useState("");
-
+  const [priceRange, setPriceRange] = useState(100);
+  const searchRef = useRef('');
   const handleSelect = (event) => {
     const slug = event.target.value;
     setData(slug);
@@ -18,8 +19,9 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
     const val = e.target.value;
     setSearchText(val);
     setSearchInput(val);
+    searchRef.current.focus()
   };
-
+  
   return (
     <div className="w-1/4 bg-gray-100 p-4 rounded-lg shadow-md h-full">
       <h2 className="text-xl font-bold mb-4">Filters</h2>
@@ -36,15 +38,16 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
         </select>
       </div>
       <div className="mb-4">
-        <label className="block mb-2">Search</label>
+        <label className="block mb-2">Search </label>
         <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value={searchText}
           onChange={handleOnChange}
-          onKeyPress={handleSearch} />
+          onKeyPress={handleSearch}
+          ref={searchRef} />
         
       </div>
       <div className="mb-4">
-        <label className="block mb-2">Price Range</label>
-        <input type="range" min="0" max="100" className="range range-primary" />
+        <label className="block mb-2">Price Range - {priceRange}</label>
+        <input type="range" min={6} max={100} className="range range-primary" value={priceRange} onChange={(e) => setPriceRange(e.target.value)} />
       </div>
       <div className="mb-4">
         <label className="block mb-2">Rating</label>

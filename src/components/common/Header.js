@@ -135,10 +135,19 @@ const Header = () => {
                 </Link>
               </li>
               <li><a >
-              <input
+              {/* <input
                 type="checkbox"
                 checked={themeMode}
                 onChange={() => setThememode(!themeMode)}
+                className="toggle theme-controller"
+              /> */}
+              {/* By Using below callback function react make sure use the prevous value to update the new value, generally if use normal function if user clicks multiple times chances of carsh or not updating the values properly  */}
+              <input
+                type="checkbox"
+                checked={themeMode}
+                onChange={() => {
+                  setThememode((prev) => !prev)
+                } }
                 className="toggle theme-controller"
               />
               {/* <input type="checkbox"  checked={isSynthwave} className="toggle theme-controller" onClick={handleThemeContext} /> */}
