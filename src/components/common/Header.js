@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext  } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
-import CartPopup from "../includes/CartPopup";
+// import CartPopup from "../includes/CartPopup";
 import ThemeContext from "../../context/ThemeContext";
 const Header = () => {
   const location = useLocation();
@@ -12,8 +12,8 @@ const Header = () => {
     dispatch(logout());
   };
   const cart = useSelector((state) => state.cart);
-  const cartItems = useSelector((state) => state.cart.items);
-  const totalPrice = cartItems.reduce((total, item) => {
+  //const cartItems = useSelector((state) => state.cart.items);
+  const totalPrice = cart.items.reduce((total, item) => {
       return total + item.price * item.quantity;
   }, 0).toFixed(2);
   const {themeMode, setThememode} = useContext(ThemeContext);

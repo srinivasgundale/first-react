@@ -40,7 +40,7 @@ const cartSlice = createSlice({
       saveCartState(state.items);
     },
     clearCart: (state) => {
-      state.items = [];
+      state.items = []; // trrurn { items:[]}
       saveCartState(state.items);
     },
     updateQuantity: (state, action) => {

@@ -1,32 +1,38 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../store/cartSlice";
+import { addToFavourite, removeFromFavourite } from "../../store/favouriteSlice";
 import { Link } from "react-router-dom";
-import { ShoppingCartIcon, XCircleIcon } from '@heroicons/react/24/solid';
+import { ShoppingCartIcon, XCircleIcon , HeartIcon as HeartIconOutline, HeartIcon as HeartIconSolid, StarIcon as StarOutlineIcon } from '@heroicons/react/24/solid';
+
 const RestaurantCard = ({ resData, isSponsored }) => {
   const { category, description, id, image, price, rating, title, thumbnail } =
     resData || {};
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items); // Ensure cart is an array
   const isAddedToCart = cartItems.some((cartItem) => cartItem?.id === id);
+  const favourites = useSelector((state) => state.favourites.items);
+  console.log("🚀 ~ RestaurantCard ~ favourites:", favourites)
+  
+  const isFavourite = favourites.some((item) => item.id === id);
 
-  const renderStars = (rating) => {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 !== 0;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+  // const renderStars = (rating) => {
+  //   const fullStars = Math.floor(rating);
+  //   const halfStar = rating % 1 !== 0;
+  //   const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
-    return (
-      <div>
-        {Array.from({ length: fullStars }, (_, index) => (
-          <i key={index} className="bi bi-star-fill text-warning"></i>
-        ))}
-        {halfStar && <i className="bi bi-star-half text-warning"></i>}
-        {Array.from({ length: emptyStars }, (_, index) => (
-          <i key={fullStars + index} className="bi bi-star text-warning"></i>
-        ))}
-      </div>
-    );
-  };
+  //   return (
+  //     <div>
+  //       {Array.from({ length: fullStars }, (_, index) => (
+  //         <i key={index} className="bi bi-star-fill text-warning"></i>
+  //       ))}
+  //       {halfStar && <i className="bi bi-star-half text-warning"></i>}
+  //       {Array.from({ length: emptyStars }, (_, index) => (
+  //         <i key={fullStars + index} className="bi bi-star text-warning"></i>
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
   return (
     
@@ -75,29 +81,50 @@ const RestaurantCard = ({ resData, isSponsored }) => {
           alt={title} loading="lazy" />
       </figure>
       </Link>
+      <button
+            onClick={(e) => {
+              e.preventDefault();
+              if (!isFavourite) {
+                dispatch(addToFavourite(resData));
+              } else {
+                dispatch(removeFromFavourite({ id }));
+              }
+            }}
+            className="absolute top-2 right-2 focus:outline-none mt-2"
+          >
+            {isFavourite ? (
+              <HeartIconSolid className="w-6 h-6 text-red-500" />
+            ) : (
+              <HeartIconOutline className="w-6 h-6 text-gray-400" />
+            )}
+          </button>
       <div className="card-body">
         <h2 className="card-title">{title?.substring(0, 20)}...</h2>
         <p>{description?.substring(0, 50)}</p>
         <small className="text-muted">₹{price}</small>
-        <div className="card-actions justify-end">
         
-        <button
-          className={`btn ${
-            isAddedToCart ? "btn btn-secondary flex items-center space-x-2" : "btn btn-primary flex items-center space-x-2"
-          }`}
-          onClick={(e) => {
-            e.preventDefault();
-            if (!isAddedToCart) {
-              dispatch(addToCart(resData));
-            } else {
-              dispatch(removeFromCart({ id }));
-            }
-          }}
-        >
-          {isAddedToCart ? (<><XCircleIcon className="h-5 w-5" />
-                <span>Remove from Cart</span></>) : (<><ShoppingCartIcon className="h-5 w-5" />
-                  <span>Add to Cart</span></>)}
-        </button>
+        <div className="card-actions justify-end">
+        { rating > 0 ? (
+        <div className="mt-3 inline-flex items-center px-3 py-1 bg-green-500 text-white font-semibold text-lg rounded-full">
+          <StarOutlineIcon className="h-6 w-6 text-yellow-500 " /><span>{rating}</span>
+        </div> ) : '' }
+          <button
+            className={`btn ${
+              isAddedToCart ? "btn btn-secondary flex items-center space-x-2" : "btn btn-primary flex items-center space-x-2"
+            }`}
+            onClick={(e) => {
+              e.preventDefault();
+              if (!isAddedToCart) {
+                dispatch(addToCart(resData));
+              } else {
+                dispatch(removeFromCart({ id }));
+              }
+            }}
+          >
+            {isAddedToCart ? (<><XCircleIcon className="h-5 w-5" />
+                  <span>Remove from Cart</span></>) : (<><ShoppingCartIcon className="h-5 w-5" />
+                    <span>Add to Cart</span></>)}
+          </button>
           
         </div>
       </div>
