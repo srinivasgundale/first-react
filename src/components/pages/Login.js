@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef  } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("emilys");
-  const [password, setPassword] = useState("emilyspass");
+  //const [username, setUsername] = useState("emilys");
+  //const [password, setPassword] = useState("emilyspass");
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,8 +18,8 @@ const Login = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username,
-          password,
+          username : emailRef.current.value,
+          password : passwordRef.current.value,
           expiresInMins: 30, // optional, defaults to 60
         }),
       });
@@ -65,9 +67,7 @@ const Login = () => {
       </form>
     </div> */}
 
-    <div className="hero bg-base-200 min-h-screen" style={{
-    backgroundImage: "url(https://images.pexels.com/photos/1037992/pexels-photo-1037992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
-  }}>
+    <div className="hero bg-base-200 min-h-screen" style={{backgroundImage: "url(https://images.pexels.com/photos/1037992/pexels-photo-1037992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)", }}>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -82,15 +82,15 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Username</span>
               </label>
-              <input type="text" placeholder="email" className="input input-bordered" value={username ?? "emilys"}  onChange={(e) => setUsername(e.target.value)}
+              <input type="text" placeholder="email" className="input input-bordered" ref={emailRef} 
             required />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="password" placeholder="password" className="input input-bordered" value={password ?? "emilyspass"}
-            onChange={(e) => setPassword(e.target.value)} />
+              <input type="password" placeholder="password" className="input input-bordered" ref={passwordRef}
+             />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
               </label>
