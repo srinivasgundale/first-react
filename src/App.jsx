@@ -12,9 +12,7 @@ import AppRouter from "./components/routes/AppRouter";
 import { StrictMode } from "react";
 
 import ThemeContextProvider from "./context/ThemeContextProvider";
-const root = ReactDOM.createRoot(document.getElementById("firstReactApp"));
-
-root.render(
+const root = ReactDOM.createRoot(document.getElementById("firstReactApp")).render(
   <Provider store={store}>
     <ThemeContextProvider>
     <StrictMode>
