@@ -2,19 +2,20 @@ import React, { useState, useRef  } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
-
+import toast from 'react-hot-toast';
+import {LOGIN_ENDPOINT} from "../../utils/constants"
 const Login = () => {
   //const [username, setUsername] = useState("emilys");
   //const [password, setPassword] = useState("emilyspass");
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const emailRef = useRef('emilys');
+  const passwordRef = useRef('emilyspass');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://dummyjson.com/auth/login", {
+      const response = await fetch(LOGIN_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -27,12 +28,14 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         dispatch(login({ user: data.user, token: data.token }));
+        toast.success('Login Successful!')
         navigate("/");
       } else {
-        alert(data.message || "Invalid credentials");
+        toast.error(data.message || "Invalid credentials")
+        //alert(data.message || "Invalid credentials");
       }
     } catch (error) {
-      alert("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     }
   };
 
@@ -80,16 +83,16 @@ const Login = () => {
           <form className="card-body" onSubmit={handleSubmit}>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Username</span>
+                <span className="label-text">Email</span>
               </label>
               <input type="text" placeholder="email" className="input input-bordered" ref={emailRef} 
-            required />
+            required defaultValue={emailRef.current} />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="password" placeholder="password" className="input input-bordered" ref={passwordRef}
+              <input type="password" placeholder="password" className="input input-bordered" ref={passwordRef} defaultValue={passwordRef.current}
              />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

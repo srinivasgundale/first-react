@@ -70,81 +70,81 @@ class AboutUs extends Component {
     //         </div>
     //       </section>
 
-    //       <header class="bg-blue-600 text-white p-4">
-    //           <div class="container mx-auto text-center">
-    //               <h1 class="text-3xl font-bold">My Skills</h1>
+    //       <header className="bg-blue-600 text-white p-4">
+    //           <div className="container mx-auto text-center">
+    //               <h1 className="text-3xl font-bold">My Skills</h1>
     //           </div>
     //       </header>
 
-    //       <section class="container mx-auto p-4">
-    //           <section class="mb-8">
-    //               <h2 class="text-2xl font-semibold mb-4">Frontend Technologies</h2>
-    //               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">HTML</h3>
+    //       <section className="container mx-auto p-4">
+    //           <section className="mb-8">
+    //               <h2 className="text-2xl font-semibold mb-4">Frontend Technologies</h2>
+    //               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">HTML</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">CSS</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">CSS</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Bootstrap</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Bootstrap</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Tailwind CSS</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Tailwind CSS</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">DaisyUI</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">DaisyUI</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">React</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">React</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Vue.js</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Vue.js</h3>
     //                   </div>
     //               </div>
     //           </section>
 
-    //           <section class="mb-8">
-    //               <h2 class="text-2xl font-semibold mb-4">Backend Technologies</h2>
-    //               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">PHP</h3>
+    //           <section className="mb-8">
+    //               <h2 className="text-2xl font-semibold mb-4">Backend Technologies</h2>
+    //               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">PHP</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Laravel</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Laravel</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Drupal</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Drupal</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Node.js</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Node.js</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">.NET</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">.NET</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Java</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Java</h3>
     //                   </div>
     //               </div>
     //           </section>
 
     //           <section>
-    //               <h2 class="text-2xl font-semibold mb-4">Database Technologies</h2>
-    //               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">MySQL</h3>
+    //               <h2 className="text-2xl font-semibold mb-4">Database Technologies</h2>
+    //               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">MySQL</h3>
     //                   </div>
     //               </div>
     //           </section>
 
-    //           <section class="mt-8">
-    //               <h2 class="text-2xl font-semibold mb-4">Cloud Services</h2>
-    //               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">AWS</h3>
+    //           <section className="mt-8">
+    //               <h2 className="text-2xl font-semibold mb-4">Cloud Services</h2>
+    //               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">AWS</h3>
     //                   </div>
-    //                   <div class="p-4 bg-white shadow-md rounded-lg">
-    //                       <h3 class="text-xl font-semibold">Azure</h3>
+    //                   <div className="p-4 bg-white shadow-md rounded-lg">
+    //                       <h3 className="text-xl font-semibold">Azure</h3>
     //                   </div>
     //               </div>
     //           </section>

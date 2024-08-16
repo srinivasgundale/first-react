@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 // import CartPopup from "../includes/CartPopup";
 import ThemeContext from "../../context/ThemeContext";
+import { Toaster } from 'react-hot-toast';
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -32,7 +33,10 @@ const Header = () => {
   };*/
   return (
     <>
-    
+    <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
     <div className="navbar bg-neutral text-neutral-content items-center">
       <div className="navbar-start">
         <div className="dropdown">
@@ -85,6 +89,16 @@ const Header = () => {
       <div className="navbar-end">
         <div className="flex-none">
           <div className="dropdown dropdown-end">
+            <input
+                type="checkbox"
+                checked={themeMode}
+                onChange={() => {
+                  setThememode((prev) => !prev)
+                } }
+                className="toggle theme-controller"
+              />
+          </div>
+          <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
               <div className="indicator">
                 <svg
@@ -102,6 +116,7 @@ const Header = () => {
                 <span className="badge badge-sm indicator-item">{cart.items.length}</span>
               </div>
             </div>
+            
             <div
               tabIndex={0}
               className="card card-compact dropdown-content bg-neutral text-neutral-content z-[1] mt-3 w-52 shadow">

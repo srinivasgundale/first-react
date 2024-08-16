@@ -1,14 +1,15 @@
-import React from "react";
+import { lazy } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../common/Header";
-import Footer from "../common/Footer";
-
+import ShimmerCards from "../common/ShimmerCards";
+//import Footer from "../common/Footer";
+const Footer = lazy(() => import("../common/Footer"));
 const AppLayout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <Outlet />
-      <Footer />
+      <Footer fallback={<ShimmerCards />} />
     </div>
   );
 };

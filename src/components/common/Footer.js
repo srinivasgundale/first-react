@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 const Footer = () => {
     const [quote, setQuote] = useState("");
     useEffect(()=> {
-        fetchRandomQuote();
+        fetchRandomQuote()
+        const intervalId = setInterval(() => {
+            fetchRandomQuote();
+          }, 10000); // Update every 1 second
+      
+          // Clean up the interval on component unmount
+          return () => clearInterval(intervalId);
       },[]);
       async function fetchRandomQuote() {
         const data = await fetch('https://dummyjson.com/quotes/random')
@@ -13,16 +19,15 @@ const Footer = () => {
     return (
         <>
         
-        <div className="container">
-        <blockquote className="fade-in blockquote text-right">
-            <p className="mb-0 ">{quote.quote} </p> 
-            <footer className="blockquote-footer mt-2"> <cite title="Source Title">{quote.author}</cite></footer>
-        </blockquote>
         
-            
+        <div className=" p-6 rounded-lg shadow-md">
+            <blockquote className="relative pl-6 border-l-4 border-blue-500  italic">
+                <p className="mb-3">{quote.quote}</p>
+                <footer className="mt-2  pl-6 text-sm font-semibold ">— {quote.author}</footer>
+            </blockquote>
         </div>
-
         <footer className="footer bg-neutral text-neutral-content items-center p-4">
+            
             <aside className="grid-flow-col items-center">
                 <svg
                 width="36"
