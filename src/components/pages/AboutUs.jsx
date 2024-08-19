@@ -1,4 +1,4 @@
-import React from "react";
+//import React from "react";
 
 const Portfolio = () => {
   return (
@@ -21,7 +21,7 @@ const ProfileSummary = () => {
       <h2 className="text-3xl font-bold text-center mb-6">Profile Summary</h2>
       <ul className="list-disc list-inside space-y-4">
         <li><strong>PHP Frameworks:</strong> Extensive experience with CodeIgniter, Laravel, Drupal, and QuickC.</li>
-        <li><strong>JavaScript Frameworks:</strong> Skilled in using jQuery, Vue.js, and ReactJs.</li>
+        <li><strong>JavaScript Frameworks:</strong> Skilled in using jQuery, Vue.js, and React.js.</li>
         <li><strong>MVC Architectures:</strong> Proficient in building Model-View-Controller architectures.</li>
         <li><strong>RESTful Services:</strong> Expertise in developing applications using RESTful Web Services.</li>
         <li><strong>Database Management:</strong> Proficient with MySQL, RDS, and SQL.</li>
@@ -147,34 +147,50 @@ const ProjectExperience = () => {
         {
           image: "https://tm.com.my/themes/custom/tmtheme/img/TM_YNIN.webp",
           title: "Telecom Malaysia",
-          role: "Full Stack Associate Manager",
-          teamSize: 2,
-          technologies: "PHP, HTML, CSS, JavaScript, GoLang, Bootstrap, MySQL, Docker, OpenAI, Dall-E-3",
+          // role: "Full Stack Associate Manager",
+          // teamSize: 2,
+          // technologies: "PHP, HTML, CSS, JavaScript, GoLang, Bootstrap, MySQL, Docker, OpenAI, Dall-E-3",
           url: "#"
         },
         {
           title: "Hartalega NGX",
           image: "https://ngx.hartalega.com.my/static/vectors/logo-combo.svg",
-          role: "Full Stack Associate Manager",
-          teamSize: 2,
-          technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, MySQL, Docker, OpenAI, Dall-E-3",
-          url: "https://hartalega.ngx"
+          // role: "Full Stack Associate Manager",
+          // teamSize: 2,
+          // technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, MySQL, Docker, OpenAI, Dall-E-3",
+          url: "https://ngx.hartalega.com.my/home"
         },
         {
           title: "Unifi & Unifi Business",
           image: "https://unifi.com.my/themes/unifi/img/newest2022/unifi.svg",
-          role: "Full Stack Associate Manager",
-          teamSize: 2,
-          technologies: "PHP, HTML, CSS, JavaScript, Drupal 9, Bootstrap, MySQL, Docker",
-          url: "https://unifi.unifi-business"
+          // role: "Full Stack Associate Manager",
+          // teamSize: 2,
+          // technologies: "PHP, HTML, CSS, JavaScript, Drupal 9, Bootstrap, MySQL, Docker",
+          url: "https://unifi.com.my/"
         },
         {
           title: "Digital Nasional Berhad",
           image: "https://www.digital-nasional.com.my/themes/custom/dnb/img/logo/dnb-logo.svg",
-          role: "Full Stack Associate Manager",
-          teamSize: 2,
-          technologies: "PHP, HTML, CSS, JavaScript, Drupal 9, Bootstrap, MySQL, Azure",
-          url: "https://digital-nasional-berhad"
+          // role: "Full Stack Associate Manager",
+          // teamSize: 2,
+          // technologies: "PHP, HTML, CSS, JavaScript, Drupal 9, Bootstrap, MySQL, Azure",
+          url: "https://www.digital-nasional.com.my/"
+        },
+        {
+          title: "UEM Sunrise",
+          image: "https://uems.imgix.net/storage/images/2023/07/FYH-Smiley-Logo-RGB.png?auto=compress&fm=webp&ixlib=php-3.3.1",
+          // role: "Full Stack Associate Manager",
+          // teamSize: 2,
+          // technologies: "PHP, HTML, CSS, JavaScript, Drupal 9, Bootstrap, MySQL, Azure",
+          url: "https://www.uemsunrise.com/"
+        },
+        {
+          title: "Internal POC",
+          image: "https://enkonix.com/api/media/Proof-of-Concept-PoC_RnwOUUo_x1_webp.webp",
+          // role: "Full Stack Associate Manager",
+          // teamSize: 2,
+          // technologies: "PHP, HTML, CSS, JavaScript, Drupal 9, Bootstrap, MySQL, Azure",
+          url: "https://www.uemsunrise.com/"
         },
       ]
     },
@@ -184,18 +200,18 @@ const ProjectExperience = () => {
         {
           title: "MDEC Fintech Booster",
           image: "https://mdec.my/static/logo/mdec-logo.png",
-          role: "Sr. Associate (Tools Development)",
-          teamSize: 4,
-          technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, Vue.js, MySQL, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
-          url: "https://mdec-fintech-booster"
+          // role: "Sr. Associate (Tools Development)",
+          // teamSize: 4,
+          // technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, Vue.js, MySQL, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
+          url: "#"
         },
         {
           title: "Touch Stone (Entropia’s Internal Application)",
           image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
-          role: "Sr. Associate (Tools Development)",
-          teamSize: 4,
-          technologies: "PHP, HTML, CSS, JavaScript, GoLang, Bootstrap, Vue.js, MySQL, RDS, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
-          url: "https://touch-stone"
+          // role: "Sr. Associate (Tools Development)",
+          // teamSize: 4,
+          // technologies: "PHP, HTML, CSS, JavaScript, GoLang, Bootstrap, Vue.js, React.js, MySQL, RDS, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
+          url: "#"
         }
       ]
     },
@@ -205,10 +221,10 @@ const ProjectExperience = () => {
         {
           title: "Whizzl",
           image: "https://www.whizzl.com/wp-content/uploads/2020/08/whizzl-logo13082020.png",
-          role: "Sr. Software Developer",
-          teamSize: 10,
-          technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, Laravel, Bootstrap, wkhtmltopdf, MySQL, AWS, AWS S3, AWS SQS, AWS RDS",
-          url: "https://whizzl"
+          // role: "Sr. Software Developer",
+          // teamSize: 10,
+          // technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, Laravel, Bootstrap, wkhtmltopdf, MySQL, AWS, AWS S3, AWS SQS, AWS RDS",
+          url: "https://www.whizzl.com/"
         }
       ]
     },
@@ -217,24 +233,27 @@ const ProjectExperience = () => {
       projects: [
         {
           title: "TMS Logistics",
-          role: "Sr. Software Engineer",
-          teamSize: 10,
-          technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, Laravel, Bootstrap, Dompdf, MySQL, AWS, AWS S3, AWS SQS, AWS RDS, PayPal",
-          url: "https://tms-logistics"
+          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          // role: "Sr. Software Engineer",
+          // teamSize: 10,
+          // technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, Laravel, Bootstrap, Dompdf, MySQL, AWS, AWS S3, AWS SQS, AWS RDS, PayPal",
+          url: "https://t-tms.com/"
         },
         {
           title: "Bingo Card Creator",
-          role: "Software Engineer",
-          teamSize: 3,
-          technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, CodeIgniter, Bootstrap, Dompdf, MySQL, PayPal, Stripe, Digital Ocean",
-          url: "https://bingo-card-creator"
+          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          // role: "Software Engineer",
+          // teamSize: 3,
+          // technologies: "PHP, HTML, CSS, JavaScript, React.js, jQuery, Ajax, CodeIgniter, Bootstrap, Dompdf, MySQL, PayPal, Stripe, Digital Ocean",
+          url: "https://www.bingocardcreator.com/"
         },
         {
           title: "Symmetry Elevators",
-          role: "Software Engineer",
-          teamSize: 5,
-          technologies: "JavaScript, jQuery, HTML, Bootstrap, CSS, Ajax",
-          url: "https://symmetry-elevators"
+          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          // role: "Software Engineer",
+          // teamSize: 5,
+          // technologies: "JavaScript, jQuery, HTML, Bootstrap, CSS, Ajax",
+          url: "https://old.symmetryelevators.com/"
         }
       ]
     },
@@ -243,10 +262,11 @@ const ProjectExperience = () => {
       projects: [
         {
           title: "Vibloo",
-          role: "PHP Developer",
-          teamSize: 3,
-          technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, JSON, log4php, AWS, REST API (Slim framework), QuickC, CodeIgniter, MySQL, PayPal, Social Media API, AWS EC2, AWS SQS, AWS S3, AWS RDS",
-          url: "https://vibloo"
+          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          // role: "PHP Developer",
+          // teamSize: 3,
+          // technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, JSON, log4php, AWS, REST API (Slim framework), QuickC, CodeIgniter, MySQL, PayPal, Social Media API, AWS EC2, AWS SQS, AWS S3, AWS RDS",
+          url: "https://vibloo.com"
         }
       ]
     }
@@ -267,9 +287,9 @@ const ProjectExperience = () => {
                   </figure>
                   <div className="card-body p-6">
                     <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
-                    <p className="text-gray-600 mb-2">{project.role}</p>
+                    {/* <p className="text-gray-600 mb-2">{project.role}</p>
                     <p className="text-gray-600 mb-2">{project.teamSize} team members</p>
-                    <p className="text-gray-600 mb-4">Technologies: {project.technologies}</p>
+                    <p className="text-gray-600 mb-4">Technologies: {project.technologies}</p> */}
                     <div className="card-actions flex justify-end">
                       <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary hover:bg-gray-700 transition-colors duration-300">
                         View Project
