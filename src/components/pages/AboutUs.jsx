@@ -1,6 +1,6 @@
-//import React from "react";
-
 const Portfolio = () => {
+  const phoneNumber = '+60102806155';
+  const email = 'srinivasgundale@gmail.com';
   return (
     <section className="hero min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)'}}>
       <div className="hero-content text-center py-20 px-6">
@@ -9,7 +9,27 @@ const Portfolio = () => {
           <p className="text-xl mb-6">
             I'm an Experienced Full Stack Web Developer with over 10 years of expertise in Analysis, Design, Development, Integration Testing, and Implementation of web-based applications.
           </p>
-          <button className="btn btn-primary hover:bg-blue-600 transition-colors duration-300">Contact Me</button>
+          <a href={`tel:${phoneNumber}`} className="btn btn-primary hover:bg-blue-600 transition-colors duration-300 mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+</svg>
+
+          </a>
+          <a href={`mailto:${email}`} className="btn btn-primary hover:bg-blue-600 transition-colors duration-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
+</svg>
+</a>
+          <a
+            href={`https://wa.me/${phoneNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-4 right-4 bg-green-500 rounded-full p-3 shadow-lg z-50 flex items-center justify-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+  <path fill-rule="evenodd" d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" clip-rule="evenodd" />
+</svg>
+
+          </a>
         </div>
       </div>
     </section>
@@ -369,7 +389,7 @@ const AboutUs = () => {
       <SkillsSection />
       <WorkExperience />
       <ProjectExperience />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   );
 };
