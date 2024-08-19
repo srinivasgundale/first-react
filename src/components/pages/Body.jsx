@@ -25,11 +25,11 @@ const Body = () => {
 
   useEffect(() => {
     if (debouncedSearchText) {
-      console.log("🚀 ~ useEffect ~ debouncedSearchText:", debouncedSearchText)
+      //console.log("🚀 ~ useEffect ~ debouncedSearchText:", debouncedSearchText)
       searchProduct(debouncedSearchText);
     } else {
       setFilteredRestaurant(listOfRest);
-      console.log("🚀 ~ useEffect ~ listOfRest:", listOfRest)
+      //console.log("🚀 ~ useEffect ~ listOfRest:", listOfRest)
     }
       
   }, [debouncedSearchText, listOfRest]);

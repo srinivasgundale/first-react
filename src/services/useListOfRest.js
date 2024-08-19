@@ -9,7 +9,7 @@ const useListOfRest = () => {
   const fetchData = async () => {
     const data = await fetch(PRODUCTS_ENDPOINT);
     const json = await data.json();
-    console.log("🚀 ~ useListOfRest ~ fetchData ~ json:", json.products);
+    //console.log("🚀 ~ useListOfRest ~ fetchData ~ json:", json.products);
     setListOfRestraunt(json.products);
   };
   return { listOfRest };

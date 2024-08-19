@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+//import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "../../store/cartSlice";
 
@@ -221,7 +221,7 @@ export const Cart = () => {
                         </dl>
                     </div>
 
-                    <a href="#" className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</a>
+                    <Link to="/checkout" className="btn btn-primary flex w-full items-center justify-center rounded-lg">Proceed to Checkout</Link>
 
                     <div className="flex items-center justify-center gap-2">
                         <span className="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>

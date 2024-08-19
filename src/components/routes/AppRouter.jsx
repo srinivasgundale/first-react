@@ -33,7 +33,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/shop",
-        element: <PrivateRoute element={Body} />,
+        element: <Suspense fallback={<ShimmerCards />}><PrivateRoute element={Body} /></Suspense>,
       },
       {
         path: "/contact",

@@ -185,7 +185,7 @@ const ProjectExperience = () => {
           url: "https://www.uemsunrise.com/"
         },
         {
-          title: "Internal POC",
+          title: "Internal Tools & POC",
           image: "https://enkonix.com/api/media/Proof-of-Concept-PoC_RnwOUUo_x1_webp.webp",
           // role: "Full Stack Associate Manager",
           // teamSize: 2,
@@ -233,7 +233,7 @@ const ProjectExperience = () => {
       projects: [
         {
           title: "TMS Logistics",
-          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          image: "https://t-tms.com/wp-content/uploads/2022/05/TMS-Open-File-150x67.png",
           // role: "Sr. Software Engineer",
           // teamSize: 10,
           // technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, Laravel, Bootstrap, Dompdf, MySQL, AWS, AWS S3, AWS SQS, AWS RDS, PayPal",
@@ -241,7 +241,7 @@ const ProjectExperience = () => {
         },
         {
           title: "Bingo Card Creator",
-          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          image: "https://www.bingocardcreator.com/images/bingo-card-creator-logo.svg",
           // role: "Software Engineer",
           // teamSize: 3,
           // technologies: "PHP, HTML, CSS, JavaScript, React.js, jQuery, Ajax, CodeIgniter, Bootstrap, Dompdf, MySQL, PayPal, Stripe, Digital Ocean",
@@ -249,7 +249,7 @@ const ProjectExperience = () => {
         },
         {
           title: "Symmetry Elevators",
-          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          image: "https://old.symmetryelevators.com/wp-content/uploads/2017/02/logo.png",
           // role: "Software Engineer",
           // teamSize: 5,
           // technologies: "JavaScript, jQuery, HTML, Bootstrap, CSS, Ajax",
@@ -262,7 +262,7 @@ const ProjectExperience = () => {
       projects: [
         {
           title: "Vibloo",
-          image: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
+          image: "https://drive.usercontent.google.com/download?id=1F6i6oD9HhsPCWXSehS1n6D_-_Q4nmnH6&authuser=0",
           // role: "PHP Developer",
           // teamSize: 3,
           // technologies: "PHP, HTML, CSS, JavaScript, jQuery, Ajax, JSON, log4php, AWS, REST API (Slim framework), QuickC, CodeIgniter, MySQL, PayPal, Social Media API, AWS EC2, AWS SQS, AWS S3, AWS RDS",
@@ -305,6 +305,29 @@ const ProjectExperience = () => {
     </section>
   );
 };
+          
+const Contact = () => {
+  return (
+    <section id="contact" className="bg-neutral p-8 rounded-lg mx-4 my-8">
+      <h2 className="text-4xl font-bold mb-4 text-neutral-content">Contact</h2>
+      <form className="shadow-lg rounded-lg p-6 space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium">Name</label>
+          <input type="text" id="name" className="input input-bordered w-full" />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium">Email</label>
+          <input type="email" id="email" className="input input-bordered w-full" />
+        </div>
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium">Message</label>
+          <textarea id="message" className="textarea textarea-bordered w-full"></textarea>
+        </div>
+        <button type="submit" className="btn btn-primary">Send</button>
+      </form>
+    </section>
+  );
+}
 
 const AboutUs = () => {
   return (
@@ -314,6 +337,7 @@ const AboutUs = () => {
       <SkillsSection />
       <WorkExperience />
       <ProjectExperience />
+      <Contact />
     </div>
   );
 };

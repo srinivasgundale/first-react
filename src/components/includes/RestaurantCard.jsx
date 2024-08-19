@@ -12,7 +12,7 @@ const RestaurantCard = ({ resData, isSponsored }) => {
   const cartItems = useSelector((state) => state.cart.items); // Ensure cart is an array
   const isAddedToCart = cartItems.some((cartItem) => cartItem?.id === id);
   const favourites = useSelector((state) => state.favourites.items);
-  console.log("🚀 ~ RestaurantCard ~ favourites:", favourites)
+  //console.log("🚀 ~ RestaurantCard ~ favourites:", favourites)
   
   const isFavourite = favourites.some((item) => item.id === id);
 
