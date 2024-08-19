@@ -19,8 +19,8 @@ export const Cart = () => {
         return total + item.price * item.quantity;
     }, 0).toFixed(2);
     const tax = (totalPrice * 0.06).toFixed(2);
-    const discount = 50;
-    const deliveryCharge = 50;
+    const discount = 0;
+    const deliveryCharge = 5;
     const finalPrice = ((parseFloat(totalPrice) + parseFloat(tax) + deliveryCharge) - parseFloat(discount) ).toFixed(2);
        
     return (
@@ -81,7 +81,7 @@ export const Cart = () => {
                     )}
                     
                     </div>
-                    <div className="hidden xl:mt-8 xl:block">
+                    {/* <div className="hidden xl:mt-8 xl:block">
                     <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">People also bought</h3>
                     <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
                         <div className="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
@@ -185,7 +185,7 @@ export const Cart = () => {
                         </div>
                         </div>
                     </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
@@ -234,7 +234,7 @@ export const Cart = () => {
                     </div>
                     </div>
 
-                    <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+                    {/* <div className="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
                     <form className="space-y-4">
                         <div>
                         <label htmlFor="voucher" className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Do you have a voucher or gift card? </label>
@@ -242,7 +242,7 @@ export const Cart = () => {
                         </div>
                         <button type="submit" className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Apply Code</button>
                     </form>
-                    </div>
+                    </div> */}
                 </div>
                 </div>
             </div>

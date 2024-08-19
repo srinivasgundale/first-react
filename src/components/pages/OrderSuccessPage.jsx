@@ -1,19 +1,21 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-
+//import { useLocation } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 const OrderSuccessPage = () => {
+  const cartItems = useSelector((state) => state.cart.items);
   // Assuming you use React Router to navigate and pass state
   //const location = useLocation();
+  const subtotal = cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
+  const tax = subtotal * 0.06;
+  const delivery = 5;
+  const total = subtotal + tax + delivery;
   const order = {
-    items: [
-      { id: 1, name: 'Wireless Headphones', quantity: 1, price: 89.99 },
-      { id: 2, name: 'Bluetooth Speaker', quantity: 2, price: 49.99 },
-      { id: 3, name: 'USB Charging Cable', quantity: 3, price: 9.99 },
-    ],
-    subtotal: 239.94,
-    tax: 14.40,
-    delivery: 50.00,
-    total: 304.34,
+    items: cartItems,
+    subtotal: subtotal,
+    tax: tax,
+    delivery: delivery,
+    total: total,
     shipping: {
       name: 'Emily Johnson',
       address: '626 Main Street, Phoenix, MS 29112, United States',
@@ -44,7 +46,7 @@ const OrderSuccessPage = () => {
               <tbody>
                 {order.items.map(item => (
                   <tr key={item.id}>
-                    <td className="border border-gray-300 px-4 py-2">{item.name}</td>
+                    <td className="border border-gray-300 px-4 py-2">{item.title}</td>
                     <td className="border border-gray-300 px-4 py-2">{item.quantity}</td>
                     <td className="border border-gray-300 px-4 py-2">${item.price.toFixed(2)}</td>
                     <td className="border border-gray-300 px-4 py-2">${(item.quantity * item.price).toFixed(2)}</td>
@@ -77,7 +79,7 @@ const OrderSuccessPage = () => {
             </div>
 
             <div className="mt-6 text-center">
-              <a href="/" className="btn btn-primary">Back to Home</a>
+              <Link to="/shop" className="btn btn-primary">Back to Home</Link>
             </div>
           </>
         )}

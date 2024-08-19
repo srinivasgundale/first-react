@@ -97,7 +97,7 @@ const ProductDetail = () => {
                   if (!isAddedToCart) {
                     dispatch(addToCart(product));
                   } else {
-                    dispatch(removeFromCart( product.id ));
+                    dispatch(removeFromCart( product));
                   }
                 }}
               >

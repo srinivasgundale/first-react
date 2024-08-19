@@ -198,6 +198,38 @@ const ProjectExperience = () => {
       company: "Entropia",
       projects: [
         {
+          title: "RHB",
+          image: "https://www.rhbgroup.com/-/media/Project/RHB/Logo/logo.png",
+          // role: "Sr. Associate (Tools Development)",
+          // teamSize: 4,
+          // technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, Vue.js, MySQL, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
+          url: "https://www.rhbgroup.com/"
+        },
+        {
+          title: "AIA",
+          image: "https://www.aia.com.my/content/dam/my-wise/images/system/icons/aia-logo-red.svg",
+          // role: "Sr. Associate (Tools Development)",
+          // teamSize: 4,
+          // technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, Vue.js, MySQL, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
+          url: "https://www.aia.com.my/"
+        },
+        {
+          title: "Nippon Paint",
+          image: "https://th.bing.com/th/id/R.bf45af7f38313043e99146ee3517e9d7?rik=VQuyl9MZn9kHVA&riu=http%3a%2f%2fassets.stickpng.com%2fimages%2f6102db05a849c40004f9a13c.png&ehk=vg%2fQSN4XfB11%2ffvlD8QL5yKJFruTubV4%2f299n9aQ1wA%3d&risl=&pid=ImgRaw&r=0",
+          // role: "Sr. Associate (Tools Development)",
+          // teamSize: 4,
+          // technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, Vue.js, MySQL, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
+          url: "https://shoponline.nipponpaint.com.my/"
+        },
+        {
+          title: "Desaru Coast",
+          image: "https://www.desarucoast.com/destination-resorts/desaru-coast.svg",
+          // role: "Sr. Associate (Tools Development)",
+          // teamSize: 4,
+          // technologies: "PHP, HTML, CSS, JavaScript, Laravel, Bootstrap, Vue.js, MySQL, AWS EC2, AWS S3, AWS SES, AWS RDS, AWS Lambda",
+          url: "https://www.desarucoast.com/"
+        },
+        {
           title: "MDEC Fintech Booster",
           image: "https://mdec.my/static/logo/mdec-logo.png",
           // role: "Sr. Associate (Tools Development)",
@@ -283,7 +315,7 @@ const ProjectExperience = () => {
               {company.projects.map((project, projIndex) => (
                 <div key={projIndex} className="card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300">
                   <figure>
-                    <img src={project.image} alt={project.title} className="w-full h-32 object-cover" />
+                    <img src={project.image} alt={project.title} className="w-full h-32 object-fit" />
                   </figure>
                   <div className="card-body p-6">
                     <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
