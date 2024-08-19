@@ -73,7 +73,7 @@ const Header = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><Link className={location.pathname === '/' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/">Home</Link></li>
+          <li><Link className={location.pathname === '/' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/">Portfolio</Link></li>
           {/* <li>
             <details>
               <summary>Parent</summary>
@@ -83,7 +83,7 @@ const Header = () => {
               </ul>
             </details>
           </li> */}
-          <li><Link className={location.pathname === '/about-us' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/about-us">About</Link></li>
+          <li><Link className={location.pathname === '/shop' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/shop">Shop</Link></li>
         </ul>
       </div>
       <div className="navbar-end">

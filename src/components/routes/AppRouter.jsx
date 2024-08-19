@@ -32,7 +32,7 @@ const appRouter = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/",
+        path: "/shop",
         element: <PrivateRoute element={Body} />,
       },
       {
@@ -44,7 +44,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/about-us",
+        path: "/",
         element: (
           <Suspense fallback={<ShimmerCards />}>
             <PrivateRoute element={AboutUs} />

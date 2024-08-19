@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, lazy } from "react";
 import { useSelector } from "react-redux";
 import RestaurantCard, { WithPromotedLabel } from "../includes/RestaurantCard";
 import ShimmerCards from "../common/ShimmerCards";
@@ -8,6 +8,7 @@ import Filter from "../includes/Filter";
 import useDebounce from '../../hooks/useDebounce';
 import Loader from '../../styles/Loader';
 import { HomeBanner } from "../includes/HomeBanner";
+const Footer = lazy(() => import("../includes/HomeBanner"));
 //import { ClipLoader } from 'react-spinners';
 const Body = () => {
   const { listOfRest } = useListOfRest();
