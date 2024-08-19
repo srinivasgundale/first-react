@@ -47,7 +47,7 @@ const appRouter = createBrowserRouter([
         path: "/",
         element: (
           <Suspense fallback={<ShimmerCards />}>
-            <PrivateRoute element={AboutUs} />
+            <AboutUs />
           </Suspense>
         ),
       },
