@@ -4,7 +4,13 @@ import { login } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 import {LOGIN_ENDPOINT} from "../../utils/constants"
+import ReactGA from "react-ga4";
 const Login = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Login"	
+  });
   //const [username, setUsername] = useState("emilys");
   //const [password, setPassword] = useState("emilyspass");
   const emailRef = useRef('emilys');

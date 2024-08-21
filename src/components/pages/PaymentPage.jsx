@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-
+import ReactGA from "react-ga4";
 const PaymentPage = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Payment Page"	
+  });
   const [cardNumber, setCardNumber] = useState('');
   const [cardExpiry, setCardExpiry] = useState('');
   const [cardCVC, setCardCVC] = useState('');

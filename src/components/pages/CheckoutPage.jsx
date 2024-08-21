@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { clearCart } from "../../store/cartSlice";
+//import { clearCart } from "../../store/cartSlice";
+import ReactGA from "react-ga4";
 const CheckoutPage = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Checkout"	
+  });
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');

@@ -4,7 +4,13 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { ShoppingCartIcon, XCircleIcon } from '@heroicons/react/24/solid';
 import { addToCart, removeFromCart } from "../../store/cartSlice";
+import ReactGA from "react-ga4";
 const ProductDetail = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Product Detail"	
+  });
     const [product, setProductDetail] = useState([]);
     const { id } = useParams();
     console.log("🚀 ~ ProductDetail ~ id:", id)

@@ -2,8 +2,13 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "../../store/cartSlice";
-
+import ReactGA from "react-ga4";
 export const Cart = () => {
+    ReactGA.send({
+        hitType: "pageview",
+              page:"/",
+              title:"Cart"	
+      });
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.items);
     

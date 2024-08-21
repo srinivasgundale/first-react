@@ -1,7 +1,12 @@
 import React from "react";
 import { useRouteError, Link } from "react-router-dom";
-
+import ReactGA from "react-ga4";
 const Error = () => {
+    ReactGA.send({
+        hitType: "pageview",
+              page:"/",
+              title:"Error"	
+      });
     const err = useRouteError();
     return (
         <div className="d-flex align-items-center justify-content-center vh-100">

@@ -8,9 +8,15 @@ import Filter from "../includes/Filter";
 import useDebounce from '../../hooks/useDebounce';
 import Loader from '../../styles/Loader';
 import { HomeBanner } from "../includes/HomeBanner";
+import ReactGA from "react-ga4";
 const Footer = lazy(() => import("../includes/HomeBanner"));
 //import { ClipLoader } from 'react-spinners';
 const Body = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Shop"	
+  });
   const { listOfRest } = useListOfRest();
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");

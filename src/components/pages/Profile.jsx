@@ -1,6 +1,11 @@
 import React from 'react';
-
+import ReactGA from "react-ga4";
 const Profile = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Profile"	
+  });
   return (
     <div className="container mx-auto p-4">
       <div className="card bg-white shadow-lg rounded-lg p-6">

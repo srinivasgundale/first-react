@@ -2,7 +2,13 @@ import React from 'react';
 //import { useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import ReactGA from "react-ga4";
 const OrderSuccessPage = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Order Success"	
+  });
   const cartItems = useSelector((state) => state.cart.items);
   // Assuming you use React Router to navigate and pass state
   //const location = useLocation();
