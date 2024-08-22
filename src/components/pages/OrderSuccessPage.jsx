@@ -40,7 +40,8 @@ const OrderSuccessPage = () => {
         {order && (
           <>
             <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
-            <table className="table w-full border-collapse border border-gray-200">
+            <div className="overflow-x-auto">
+            <table className="table table-zebra">
               <thead>
                 <tr>
                   <th className="border border-gray-300 px-4 py-2">Product</th>
@@ -76,7 +77,7 @@ const OrderSuccessPage = () => {
                 </tr>
               </tbody>
             </table>
-
+            </div>
             <div className="mt-6">
               <h4 className="text-lg font-semibold mb-2">Shipping Information</h4>
               <p><strong>Name:</strong> {order.shipping.name}</p>

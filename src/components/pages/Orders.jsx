@@ -51,7 +51,8 @@ const Orders = () => {
         </div>
 
         {/* Table */}
-        <table className="table w-full border-collapse border border-gray-200">
+        <div className="overflow-x-auto">
+        <table className="table table-zebra">
           <thead>
             <tr>
               <th className="border border-gray-300 px-4 py-2">Order ID</th>
@@ -79,6 +80,7 @@ const Orders = () => {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

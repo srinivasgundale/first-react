@@ -23,7 +23,7 @@ const Header = () => {
   
   useEffect(() => {
     const htmlElement = document.documentElement;
-    htmlElement.setAttribute('data-theme', themeMode ? 'dark' : 'cupcake');
+    htmlElement.setAttribute('data-theme', themeMode ? 'dim' : 'cupcake');
     setThememode(themeMode);
     
   }, [themeMode]);
