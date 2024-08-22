@@ -230,53 +230,62 @@ const RestaurantCard = ({ resData, isSponsored }) => {
       </div>
     </div>
     </Link> */}
-      <Link to={"/product/" + id}>
-        <div className="card glass w-90">
+
+      <div className="card glass w-90">
+        <Link to={"/product/" + id}>
           <figure>
             <img src={thumbnail} alt={title} loading="lazy" />
           </figure>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              if (!isFavourite) {
-                dispatch(addToFavourite(resData));
-              } else {
-                dispatch(removeFromFavourite({ id }));
-              }
-            }}
-            className="absolute top-2 right-2 focus:outline-none mt-2"
-          >
-            {isFavourite ? (
-              <HeartIconSolid className="w-6 h-6 text-red-500" />
-            ) : (
-              <HeartIconOutline className="w-6 h-6 text-gray-400" />
-            )}
-          </button>
-          <div className="card-body">
-            <h2 className="card-title">{title?.substring(0, 20)}...</h2>
-            <p>${price}</p>
-            <div className="card-actions justify-end">
-              <button
-                className={`btn ${
-                  isAddedToCart
-                    ? "btn btn-circle btn-outline text-error hover:bg-error"
-                    : "btn btn-circle btn-outline text-primary hover:bg-primary"
-                }`}
-              >
-                {isAddedToCart ? (
-                  <>
-                    <XCircleIcon className="h-5 w-5" />
-                  </>
-                ) : (
-                  <>
-                    <ShoppingCartIcon className="h-5 w-5" />
-                  </>
-                )}
-              </button>
-            </div>
+        </Link>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            if (!isFavourite) {
+              dispatch(addToFavourite(resData));
+            } else {
+              dispatch(removeFromFavourite({ id }));
+            }
+          }}
+          className="absolute top-2 right-2 focus:outline-none mt-2"
+        >
+          {isFavourite ? (
+            <HeartIconSolid className="w-6 h-6 text-red-500" />
+          ) : (
+            <HeartIconOutline className="w-6 h-6 text-gray-400" />
+          )}
+        </button>
+        <div className="card-body">
+          <h2 className="card-title">{title?.substring(0, 20)}...</h2>
+          <p>${price}</p>
+          <div className="card-actions justify-end">
+            <button
+              className={`btn ${
+                isAddedToCart
+                  ? "btn btn-circle btn-outline text-error hover:bg-error"
+                  : "btn btn-circle btn-outline text-primary hover:bg-primary"
+              }`}
+              onClick={(e) => {
+                          e.preventDefault();
+                          if (!isAddedToCart) {
+                            dispatch(addToCart(resData));
+                          } else {
+                            dispatch(removeFromCart({ id }));
+                          }
+                        }}
+            >
+              {isAddedToCart ? (
+                <>
+                  <XCircleIcon className="h-5 w-5" />
+                </>
+              ) : (
+                <>
+                  <ShoppingCartIcon className="h-5 w-5" />
+                </>
+              )}
+            </button>
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

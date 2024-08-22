@@ -5,7 +5,7 @@ export const HomeBanner = () => {
   
   const fetchData = async (color) => {
     try {
-      const response = await fetch(`https://dummyjson.com/image/300x400/${color}`);
+      const response = await fetch(`https://dummyjson.com/image/800x200/${color}`);
       const data = await response.blob();
       const objectUrl = URL.createObjectURL(data);
       return objectUrl;
@@ -41,23 +41,40 @@ export const HomeBanner = () => {
 
     fetchAndSetData();
   }, []);
-
+  console.log(banners.length);
   return (
+    
     <>
       {banners.length === 0 ? (
-        <div className="skeleton h-40 w-full"></div>
-      ) : (
-        <div className="carousel rounded-box">
-          {banners.map((banner, index) => (
-            <div className="carousel-item" key={index}>
-              <img
-                src={banner} // Use the object URL
-                alt={`Banner ${index}`}
-              />
-            </div>
-          ))}
+  <div className="skeleton h-40 w-full"></div>
+) : (
+  <div className="carousel w-full">
+    {banners.map((banner, index) => (
+      <div
+        id={`slide${index + 1}`}
+        key={index}
+        className="carousel-item relative w-full"
+      >
+        <img src={banner} className="w-full" alt={`Slide ${index + 1}`} />
+        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+          <a
+            href={`#slide${index === 0 ? banners.length : index}`}
+            className="btn btn-circle"
+          >
+            ❮
+          </a>
+          <a
+            href={`#slide${(index + 1) % banners.length + 1}`}
+            className="btn btn-circle"
+          >
+            ❯
+          </a>
         </div>
-      )}
+      </div>
+    ))}
+  </div>
+)}
+
     </>
   );
 };
