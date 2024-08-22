@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ShimmerCards from '../common/ShimmerCards';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { ShoppingCartIcon, XCircleIcon } from '@heroicons/react/24/solid';
+import { ShoppingCartIcon, XCircleIcon, TrashIcon  } from '@heroicons/react/24/solid';
 import { addToCart, removeFromCart } from "../../store/cartSlice";
 import ReactGA from "react-ga4";
 const ProductDetail = () => {
@@ -107,7 +107,7 @@ const ProductDetail = () => {
                   }
                 }}
               >
-              {isAddedToCart ? (<><XCircleIcon className="h-5 w-5" />
+              {isAddedToCart ? (<><TrashIcon  className="h-5 w-5" />
                     Remove from Cart</>) : (<><ShoppingCartIcon className="h-5 w-5" />
                       Add to Cart</>)}
             </button>

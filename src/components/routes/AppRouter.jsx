@@ -24,7 +24,7 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
-        path: "/login",
+        path: "/",
         element: <Login />,
       },
       {
@@ -44,10 +44,11 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/",
+        path: "/portfolio",
         element: (
           <Suspense fallback={<ShimmerCards />}>
-            <AboutUs />
+            <PrivateRoute element={AboutUs} />
+            {/* <AboutUs /> */}
           </Suspense>
         ),
       },

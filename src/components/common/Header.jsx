@@ -57,7 +57,7 @@ const Header = () => {
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            <li><Link className={location.pathname === '/' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/">Portfolio</Link></li>
+            <li><Link className={location.pathname === '/portfolio' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/portfolio">Portfolio</Link></li>
             {/* <li>
               <a>Parent</a>
               <ul className="p-2">
@@ -83,7 +83,7 @@ const Header = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><Link className={location.pathname === '/' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/">Portfolio</Link></li>
+          <li><Link className={location.pathname === '/portfolio' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/portfolio">Portfolio</Link></li>
           {/* <li>
             <details>
               <summary>Parent</summary>

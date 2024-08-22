@@ -1,4 +1,5 @@
 import ReactGA from "react-ga4";
+import { AtSymbolIcon, PhoneIcon, ChevronRightIcon  } from '@heroicons/react/24/solid';
 const Portfolio = () => {
   ReactGA.send({
     hitType: "pageview",
@@ -24,8 +25,38 @@ const Portfolio = () => {
               expertise in Analysis, Design, Development, Integration Testing, and
               Implementation of web-based applications.
             </p>
+            <a
+            href={`tel:${phoneNumber}`}
+            className="btn btn-primary hover:bg-blue-600 transition-colors duration-300 mr-2"
+          >
+            <PhoneIcon className="h-6 w-6" />
+          </a>
+          <a
+            href={`mailto:${email}`}
+            className="btn btn-primary hover:bg-blue-600 transition-colors duration-300"
+          >
+            <AtSymbolIcon className="h-6 w-6" />
+          </a>
+          <a
+            href={`https://wa.me/${phoneNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-4 right-4 bg-green-500 rounded-full p-3 shadow-lg z-50 flex items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-6"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </a>
             
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>
@@ -233,7 +264,7 @@ const WorkExperience = () => {
       {experiences.map((experience, index) => (
         <li key={index}>
           <div className="timeline-start">{experience.tenure}</div>
-          <div className="timeline-middle">
+          <div className="timeline-middle ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -247,7 +278,7 @@ const WorkExperience = () => {
               />
             </svg>
           </div>
-          <div className="timeline-end timeline-box">
+          <div className="timeline-end timeline-box transition-transform transform hover:scale-105 duration-300">
           <h3 className="text-2xl font-bold mb-2">
                   {experience.company}
                 </h3>
@@ -628,7 +659,7 @@ const ProjectExperience = () => {
                         rel="noopener noreferrer"
                         className="btn btn-secondary hover:bg-gray-700 transition-colors duration-300"
                       >
-                        View Project
+                        <ChevronRightIcon className="h-5 w-5" />
                       </a>
                     </div>
                   </div>

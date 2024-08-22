@@ -23,7 +23,7 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
   };
   
   return (
-    <div className="w-1/4 card  p-4 rounded-lg shadow-md h-full glass">
+    < >
       <h2 className="text-xl font-bold mb-4">Filters</h2>
       <div className="mb-4">
         <label className="block mb-2">Category</label>
@@ -61,7 +61,7 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
         </select>
       </div>
       <button className="btn hidden btn-primary w-full">Apply Filters</button>
-    </div>
+    </>
     // <nav className="navbar navbar-expand-lg navbar-light">
     //   <ul className="mr-auto navbar-nav">
     //     <li className="nav-item">

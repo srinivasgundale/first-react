@@ -35,7 +35,7 @@ const Login = () => {
       if (response.ok) {
         dispatch(login({ user: data.user, token: data.token }));
         toast.success('Login Successful!')
-        navigate("/");
+        navigate("/shop");
       } else {
         toast.error(data.message || "Invalid credentials")
         //alert(data.message || "Invalid credentials");

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, lazy } from "react";
+import React, { useState, useEffect, useCallback, lazy, Fragment } from "react";
 import { useSelector } from "react-redux";
 import RestaurantCard, { WithPromotedLabel } from "../includes/RestaurantCard";
 import ShimmerCards from "../common/ShimmerCards";
@@ -88,26 +88,29 @@ const Body = () => {
           <div className="hidden">
             {loading ? (<><Loader /> </>) : ''}
           </div>
-          <div className="flex p-4">
+          <div className="flex flex-col md:flex-row p-4">
+          <div className="w-full bg-base md:w-1/4 mb-4 md:mb-0 p-4 rounded-lg  h-full glass">
+          
             <Filter 
               setData={handleSelectNew} 
               setSearchInput={handleSearchText} 
               setHandleSearch={handleSearchNew} 
             />
-            <div className="w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+          </div>
+            <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
               
                 {filteredRestaurant.map((restaurant) => (
-                  <div className="card w-full bg-base-100 shadow-xl" key={restaurant.id}>
+                  <Fragment className="" key={restaurant.id}>
                     {restaurant.id === 1 ? (
                       <RestaurantCardPromoted resData={restaurant} />
                     ) : (
                       <RestaurantCard resData={restaurant} />
                     )}
-                  </div>
+                  </Fragment>
                 ))}
               
             </div>
-          </div>
+            </div>
           </>
         )}
         {isCartOpen && <CartPopup cart={cart} onClose={toggleCartPopup} />}
