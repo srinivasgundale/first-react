@@ -66,6 +66,7 @@ const Header = () => {
               </ul>
             </li> */}
             <li><Link className={location.pathname === '/about-us' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/shop">Shop</Link></li>
+            <li><Link className={location.pathname === '/feed' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/feed">Feed</Link></li>
           </ul>
         </div>
         <Link className="btn btn-ghost text-x" aria-current="page" to="/"><svg
@@ -94,6 +95,7 @@ const Header = () => {
             </details>
           </li> */}
           <li><Link className={location.pathname === '/shop' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/shop">Shop</Link></li>
+          <li><Link className={location.pathname === '/feed' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/feed">Feed</Link></li>
         </ul>
       </div>
       <div className="navbar-end">
