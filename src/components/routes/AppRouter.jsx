@@ -16,6 +16,7 @@ import CheckoutPage from "../pages/CheckoutPage";
 import PaymentPage from "../pages/PaymentPage";
 import OrderSuccessPage from "../pages/OrderSuccessPage";
 import Feed from "../pages/Feed";
+import AiComm from "../pages/AiComm";
 const AboutUs = lazy(() => import("../pages/AboutUs"));
 
 const appRouter = createBrowserRouter([
@@ -33,7 +34,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/shop",
-        element: <Suspense fallback={<ShimmerCards />}><PrivateRoute element={Body} /></Suspense>,
+        element: (
+          <Suspense fallback={<ShimmerCards />}>
+            <PrivateRoute element={Body} />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
@@ -84,6 +89,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/feed",
         element: <PrivateRoute element={Feed} />,
+      },
+      {
+        path: "/ai-comm",
+        element: <AiComm />,
       },
     ],
     errorElement: <Error />,
