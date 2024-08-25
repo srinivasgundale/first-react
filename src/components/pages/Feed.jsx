@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 // Replace this URL with your actual API endpoint
 const API_URL = 'https://dummyjson.com/posts';
-
+import ReactGA from "react-ga4";
 const Feed = () => {
+  ReactGA.send({
+    hitType: "pageview",
+          page:"/",
+          title:"Feed"	
+  });
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
