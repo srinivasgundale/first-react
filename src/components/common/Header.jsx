@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext  } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 // import CartPopup from "../includes/CartPopup";
 import ThemeContext from "../../context/ThemeContext";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -14,18 +14,17 @@ const Header = () => {
   };
   const cart = useSelector((state) => state.cart);
   //const cartItems = useSelector((state) => state.cart.items);
-  const totalPrice = cart.items.reduce((total, item) => {
+  const totalPrice = cart.items
+    .reduce((total, item) => {
       return total + item.price * item.quantity;
-  }, 0).toFixed(2);
-  const {themeMode, setThememode} = useContext(ThemeContext);
-  
-  
-  
+    }, 0)
+    .toFixed(2);
+  const { themeMode, setThememode } = useContext(ThemeContext);
+
   useEffect(() => {
     const htmlElement = document.documentElement;
-    htmlElement.setAttribute('data-theme', themeMode ? 'dim' : 'cupcake');
+    htmlElement.setAttribute("data-theme", themeMode ? "dim" : "light");
     setThememode(themeMode);
-    
   }, [themeMode]);
   /*const [isCartOpen, setIsCartOpen] = useState(false);
   const toggleCartPopup = () => {
@@ -33,59 +32,108 @@ const Header = () => {
   };*/
   return (
     <>
-    <Toaster
-        position="top-right"
-        reverseOrder={false}
-      />
-    <div className="navbar bg-neutral text-neutral-content items-center">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            <li><Link className={location.pathname === '/portfolio' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/portfolio">Portfolio</Link></li>
-            {/* <li>
+      <Toaster position="top-right" reverseOrder={false} />
+      <div className="items-center navbar bg-neutral text-neutral-content">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <Link
+                  className={
+                    location.pathname === "/portfolio"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  aria-current="page"
+                  to="/portfolio"
+                >
+                  Portfolio
+                </Link>
+              </li>
+              {/* <li>
               <a>Parent</a>
               <ul className="p-2">
                 <li><a>Submenu 1</a></li>
                 <li><a>Submenu 2</a></li>
               </ul>
             </li> */}
-            <li><Link className={location.pathname === '/about-us' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/shop">Shop</Link></li>
-            <li><Link className={location.pathname === '/feed' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/feed">Feed</Link></li>
-          </ul>
+              <li>
+                <Link
+                  className={
+                    location.pathname === "/about-us"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  aria-current="page"
+                  to="/shop"
+                >
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className={
+                    location.pathname === "/feed"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  aria-current="page"
+                  to="/feed"
+                >
+                  Feed
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <Link className="btn btn-ghost text-x" aria-current="page" to="/">
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              className="fill-current"
+            >
+              <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
+            </svg>{" "}
+          </Link>
         </div>
-        <Link className="btn btn-ghost text-x" aria-current="page" to="/"><svg
-                width="36"
-                height="36"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                fillRule="evenodd"
-                clipRule="evenodd"
-                className="fill-current">
-                <path
-                    d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
-                </svg> </Link>
-        
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li><Link className={location.pathname === '/portfolio' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/portfolio">Portfolio</Link></li>
-          {/* <li>
+        <div className="hidden navbar-center lg:flex">
+          <ul className="px-1 menu menu-horizontal">
+            <li>
+              <Link
+                className={
+                  location.pathname === "/portfolio"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                aria-current="page"
+                to="/portfolio"
+              >
+                Portfolio
+              </Link>
+            </li>
+            {/* <li>
             <details>
               <summary>Parent</summary>
               <ul className="p-2">
@@ -94,101 +142,151 @@ const Header = () => {
               </ul>
             </details>
           </li> */}
-          <li><Link className={location.pathname === '/shop' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/shop">Shop</Link></li>
-          <li><Link className={location.pathname === '/feed' ? 'nav-link active' : 'nav-link'} aria-current="page" to="/feed">Feed</Link></li>
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <div className="flex-none">
-          <div className="dropdown dropdown-end">
-            <input
+            <li>
+              <Link
+                className={
+                  location.pathname === "/shop" ? "nav-link active" : "nav-link"
+                }
+                aria-current="page"
+                to="/shop"
+              >
+                Shop
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={
+                  location.pathname === "/feed" ? "nav-link active" : "nav-link"
+                }
+                aria-current="page"
+                to="/feed"
+              >
+                Feed
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="navbar-end">
+          <div className="flex-none">
+            <div className="dropdown dropdown-end">
+              <input
                 type="checkbox"
                 checked={themeMode}
                 onChange={() => {
-                  setThememode((prev) => !prev)
-                } }
+                  setThememode((prev) => !prev);
+                }}
                 className="toggle theme-controller"
               />
-          </div>
-          <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-              <div className="indicator">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <span className="badge badge-sm indicator-item">{cart.items.length}</span>
-              </div>
             </div>
-            
-            <div
-              tabIndex={0}
-              className="card card-compact dropdown-content bg-neutral text-neutral-content z-[1] mt-3 w-52 shadow">
-              <div className="card-body">
-                <span className="text-lg font-bold">{cart.items.length} Item{cart.length !== 1 ? "s" : ""}{" "}</span>
-                <span className="text-info">Subtotal: ₹{totalPrice}</span>
-                <div className="card-actions">
-                  <Link to="/cart"><button className="btn btn-primary btn-block">View cart</button></Link>
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle"
+              >
+                <div className="indicator">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  <span className="badge badge-sm indicator-item">
+                    {cart.items.length}
+                  </span>
+                </div>
+              </div>
+
+              <div
+                tabIndex={0}
+                className="card card-compact dropdown-content bg-neutral text-neutral-content z-[1] mt-3 w-52 shadow"
+              >
+                <div className="card-body">
+                  <span className="text-lg font-bold">
+                    {cart.items.length} Item{cart.length !== 1 ? "s" : ""}{" "}
+                  </span>
+                  <span className="text-info">Subtotal: ₹{totalPrice}</span>
+                  <div className="card-actions">
+                    <Link to="/cart">
+                      <button className="btn btn-primary btn-block">
+                        View cart
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  />
+                </div>
               </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-neutral text-neutral-content rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
                 {isAuthenticated ? (
                   <>
-              <li>
-                <Link className="justify-between" to="/profile">
-                
-                  Profile
-                  <span className="badge">New</span>
-                </Link>
-              </li>
-              <li><a >
-              {/* <input
+                    <li>
+                      <Link className="justify-between" to="/profile">
+                        Profile
+                        <span className="badge">New</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <a>
+                        {/* <input
                 type="checkbox"
                 checked={themeMode}
                 onChange={() => setThememode(!themeMode)}
                 className="toggle theme-controller"
               /> */}
-              {/* By Using below callback function react make sure use the prevous value to update the new value, generally if use normal function if user clicks multiple times chances of carsh or not updating the values properly  */}
-              <input
-                type="checkbox"
-                checked={themeMode}
-                onChange={() => {
-                  setThememode((prev) => !prev)
-                } }
-                className="toggle theme-controller"
-              />
-              {/* <input type="checkbox"  checked={isSynthwave} className="toggle theme-controller" onClick={handleThemeContext} /> */}
-                </a>
-              </li>
-              
-              <li><a onClick={handleLogout}>Logout</a></li>
-              </> ) : (<li><Link className="justify-between" to="/login">Login</Link></li>) } 
-            </ul>
+                        {/* By Using below callback function react make sure use the prevous value to update the new value, generally if use normal function if user clicks multiple times chances of carsh or not updating the values properly  */}
+                        <input
+                          type="checkbox"
+                          checked={themeMode}
+                          onChange={() => {
+                            setThememode((prev) => !prev);
+                          }}
+                          className="toggle theme-controller"
+                        />
+                        {/* <input type="checkbox"  checked={isSynthwave} className="toggle theme-controller" onClick={handleThemeContext} /> */}
+                      </a>
+                    </li>
+
+                    <li>
+                      <a onClick={handleLogout}>Logout</a>
+                    </li>
+                  </>
+                ) : (
+                  <li>
+                    <Link className="justify-between" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    {/* <nav className="navbar navbar-dark bg-dark fixed-top">
+      {/* <nav className="navbar navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
       <Link className="navbar-brand" to="/">React App</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -220,7 +318,7 @@ const Header = () => {
                   <i className="bi bi-person-circle"></i>
                 </Link>
               </li>
-              <li className="nav-item mt-2"><span
+              <li className="mt-2 nav-item"><span
                 className="navbar-text"
                 style={{ cursor: "pointer" }}
                 onClick={toggleCartPopup}
@@ -228,7 +326,7 @@ const Header = () => {
                 <i className="bi bi-cart-fill"></i> {cart.items.length} item
                 {cart.length !== 1 ? "s" : ""}{" "}
               </span></li>
-              <li className="nav-item mt-2">
+              <li className="mt-2 nav-item">
                 <button className="btn btn-danger" onClick={handleLogout}>
                   Logout
                 </button>
@@ -240,7 +338,7 @@ const Header = () => {
                 </Link>
               </li></>) }
             </ul>
-            <form className="d-flex mt-3" role="search">
+            <form className="mt-3 d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-success" type="submit">Search</button>
             </form>
@@ -283,7 +381,7 @@ const Header = () => {
                   <i className="bi bi-person-circle"></i>
                 </Link>
               </li>
-              <li className="nav-item mt-2"><span
+              <li className="mt-2 nav-item"><span
                 className="navbar-text"
                 style={{ cursor: "pointer" }}
                 onClick={toggleCartPopup}

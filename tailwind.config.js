@@ -4,10 +4,18 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
-    require('daisyui'),
-  ],
+  plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark", "cupcake" ,"cyberpunk", "aqua", "pastel", "dim", "retro"],
+    themes: [
+      "light",
+      "dark",
+      "cupcake",
+      "cyberpunk",
+      "aqua",
+      "pastel",
+      "dim",
+      "winter",
+      "corporate",
+    ],
   },
 };

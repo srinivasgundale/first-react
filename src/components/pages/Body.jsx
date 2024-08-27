@@ -5,8 +5,8 @@ import ShimmerCards from "../common/ShimmerCards";
 import useListOfRest from "../../services/useListOfRest";
 import CartPopup from "../includes/CartPopup";
 import Filter from "../includes/Filter";
-import useDebounce from '../../hooks/useDebounce';
-import Loader from '../../styles/Loader';
+import useDebounce from "../../hooks/useDebounce";
+import Loader from "../../styles/Loader";
 import { HomeBanner } from "../includes/HomeBanner";
 import ReactGA from "react-ga4";
 const Footer = lazy(() => import("../includes/HomeBanner"));
@@ -14,8 +14,8 @@ const Footer = lazy(() => import("../includes/HomeBanner"));
 const Body = () => {
   ReactGA.send({
     hitType: "pageview",
-          page:"/",
-          title:"Shop"	
+    page: "/",
+    title: "Shop",
   });
   const { listOfRest } = useListOfRest();
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -37,7 +37,6 @@ const Body = () => {
       setFilteredRestaurant(listOfRest);
       //console.log("🚀 ~ useEffect ~ listOfRest:", listOfRest)
     }
-      
   }, [debouncedSearchText, listOfRest]);
   useEffect(() => {
     // Simulate a data fetch
@@ -49,28 +48,40 @@ const Body = () => {
     setIsCartOpen((prevState) => !prevState);
   };
 
-  const handleSelectNew = useCallback((slug) => {
-    if (slug === "top-products") {
-      setFilteredRestaurant(listOfRest.filter((res) => res.rating >= 4));
-    } else {
-      setFilteredRestaurant(listOfRest.filter((res) => res.category === slug));
-    }
-  }, [listOfRest]);
+  const handleSelectNew = useCallback(
+    (slug) => {
+      if (slug === "top-products") {
+        setFilteredRestaurant(listOfRest.filter((res) => res.rating >= 4));
+      } else {
+        setFilteredRestaurant(
+          listOfRest.filter((res) => res.category === slug)
+        );
+      }
+    },
+    [listOfRest]
+  );
 
-  const handleSearchNew = useCallback((e) => {
-    if (e.key === "Enter") {
-      setFilteredRestaurant(listOfRest.filter((res) =>
-        res.title.toLowerCase().includes(debouncedSearchText.toLowerCase())
-      ));
-    }
-  }, [listOfRest, debouncedSearchText]);
+  const handleSearchNew = useCallback(
+    (e) => {
+      if (e.key === "Enter") {
+        setFilteredRestaurant(
+          listOfRest.filter((res) =>
+            res.title.toLowerCase().includes(debouncedSearchText.toLowerCase())
+          )
+        );
+      }
+    },
+    [listOfRest, debouncedSearchText]
+  );
 
   const handleSearchText = useCallback((val) => {
     setSearchText(val);
   }, []);
 
   const searchProduct = async (query) => {
-    const data = await fetch(`https://dummyjson.com/products/search?q=${query}`);
+    const data = await fetch(
+      `https://dummyjson.com/products/search?q=${query}`
+    );
     const json = await data.json();
     setFilteredRestaurant(json.products);
   };
@@ -79,26 +90,29 @@ const Body = () => {
     <main role="main" className="container mx-auto">
       <HomeBanner />
       <div className="body">
-        
         <br />
         {listOfRest.length === 0 ? (
           <ShimmerCards />
         ) : (
           <>
-          <div className="hidden">
-            {loading ? (<><Loader /> </>) : ''}
-          </div>
-          <div className="flex flex-col md:flex-row p-4">
-          <div className="w-full bg-base md:w-1/4 mb-4 md:mb-0 p-4 rounded-lg  h-full glass">
-          
-            <Filter 
-              setData={handleSelectNew} 
-              setSearchInput={handleSearchText} 
-              setHandleSearch={handleSearchNew} 
-            />
-          </div>
-            <div className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-              
+            <div className="hidden">
+              {loading ? (
+                <>
+                  <Loader />{" "}
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="flex flex-col md:flex-row">
+              <div className="w-full h-full p-4 mt-4 mb-4 rounded-lg bg-base md:w-1/4 md:mb-0 glass">
+                <Filter
+                  setData={handleSelectNew}
+                  setSearchInput={handleSearchText}
+                  setHandleSearch={handleSearchNew}
+                />
+              </div>
+              <div className="grid w-full grid-cols-1 gap-4 p-4 md:w-3/4 md:grid-cols-2 lg:grid-cols-3">
                 {filteredRestaurant.map((restaurant) => (
                   <Fragment className="" key={restaurant.id}>
                     {restaurant.id === 1 ? (
@@ -108,8 +122,7 @@ const Body = () => {
                     )}
                   </Fragment>
                 ))}
-              
-            </div>
+              </div>
             </div>
           </>
         )}
