@@ -59,7 +59,7 @@ const Filter = ({
         <input
           type="text"
           placeholder="Type here"
-          className="w-full max-w-xs input input-bordered"
+          className="w-full input input-bordered"
           value={searchText}
           onChange={handleOnChange}
           onKeyPress={handleSearch}

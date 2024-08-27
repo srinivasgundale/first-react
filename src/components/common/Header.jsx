@@ -23,7 +23,7 @@ const Header = () => {
 
   useEffect(() => {
     const htmlElement = document.documentElement;
-    htmlElement.setAttribute("data-theme", themeMode ? "dim" : "light");
+    htmlElement.setAttribute("data-theme", themeMode ? "light" : "dark");
     setThememode(themeMode);
   }, [themeMode]);
   /*const [isCartOpen, setIsCartOpen] = useState(false);
@@ -59,26 +59,6 @@ const Header = () => {
               <li>
                 <Link
                   className={
-                    location.pathname === "/portfolio"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  aria-current="page"
-                  to="/portfolio"
-                >
-                  Portfolio
-                </Link>
-              </li>
-              {/* <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-            </li> */}
-              <li>
-                <Link
-                  className={
                     location.pathname === "/about-us"
                       ? "nav-link active"
                       : "nav-link"
@@ -102,6 +82,26 @@ const Header = () => {
                   Feed
                 </Link>
               </li>
+              <li>
+                <Link
+                  className={
+                    location.pathname === "/portfolio"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  aria-current="page"
+                  to="/portfolio"
+                >
+                  Portfolio
+                </Link>
+              </li>
+              {/* <li>
+              <a>Parent</a>
+              <ul className="p-2">
+                <li><a>Submenu 1</a></li>
+                <li><a>Submenu 2</a></li>
+              </ul>
+            </li> */}
             </ul>
           </div>
           <Link className="btn btn-ghost text-x" aria-current="page" to="/">
@@ -120,28 +120,6 @@ const Header = () => {
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">
-            <li>
-              <Link
-                className={
-                  location.pathname === "/portfolio"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-                aria-current="page"
-                to="/portfolio"
-              >
-                Portfolio
-              </Link>
-            </li>
-            {/* <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-            </details>
-          </li> */}
             <li>
               <Link
                 className={
@@ -164,6 +142,28 @@ const Header = () => {
                 Feed
               </Link>
             </li>
+            <li>
+              <Link
+                className={
+                  location.pathname === "/portfolio"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                aria-current="page"
+                to="/portfolio"
+              >
+                Portfolio
+              </Link>
+            </li>
+            {/* <li>
+            <details>
+              <summary>Parent</summary>
+              <ul className="p-2">
+                <li><a>Submenu 1</a></li>
+                <li><a>Submenu 2</a></li>
+              </ul>
+            </details>
+          </li> */}
           </ul>
         </div>
         <div className="navbar-end">

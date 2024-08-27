@@ -1,5 +1,9 @@
 import ReactGA from "react-ga4";
-import { AtSymbolIcon, PhoneIcon, ChevronRightIcon  } from '@heroicons/react/24/solid';
+import {
+  AtSymbolIcon,
+  PhoneIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/solid";
 const Portfolio = () => {
   ReactGA.send({
     hitType: "pageview",
@@ -11,66 +15,67 @@ const Portfolio = () => {
   return (
     <>
       <div
-        className="hero min-h-screen"
+        className="min-h-screen hero"
         style={{
-          backgroundImage: "url(https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-        }}>
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+        }}
+      >
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content text-center py-20 px-">
+        <div className="py-20 text-center hero-content text-neutral-content px-">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Hello there :)</h1>
-            
-            <p className="text-xl mb-6">
-              I'm Srinivas Gundali, an Experienced Full Stack Web Developer with over 10 years of
-              expertise in Analysis, Design, Development, Integration Testing, and
-              Implementation of web-based applications.
+
+            <p className="mb-6 text-xl">
+              I'm Srinivas Gundali, an Experienced Full Stack Web Developer with
+              over 10 years of expertise in Analysis, Design, Development,
+              Integration Testing, and Implementation of web-based applications.
             </p>
             <a
-            href={`tel:${phoneNumber}`}
-            className="btn btn-primary hover:bg-blue-600 transition-colors duration-300 mr-2"
-          >
-            <PhoneIcon className="h-6 w-6" />
-          </a>
-          <a
-            href={`mailto:${email}`}
-            className="btn btn-primary hover:bg-blue-600 transition-colors duration-300"
-          >
-            <AtSymbolIcon className="h-6 w-6" />
-          </a>
-          <a
-            href={`https://wa.me/${phoneNumber}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="fixed bottom-4 right-4 bg-green-500 rounded-full p-3 shadow-lg z-50 flex items-center justify-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="size-6"
+              href={`tel:${phoneNumber}`}
+              className="mr-2 transition-colors duration-300 btn btn-primary hover:bg-blue-600"
             >
-              <path
-                fillRule="evenodd"
-                d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </a>
-            
+              <PhoneIcon className="w-6 h-6" />
+            </a>
+            <a
+              href={`mailto:${email}`}
+              className="transition-colors duration-300 btn btn-primary hover:bg-blue-600"
+            >
+              <AtSymbolIcon className="w-6 h-6" />
+            </a>
+            <a
+              href={`https://wa.me/${phoneNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed z-50 flex items-center justify-center p-3 bg-green-500 rounded-full shadow-lg bottom-4 right-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="size-6"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4.804 21.644A6.707 6.707 0 0 0 6 21.75a6.721 6.721 0 0 0 3.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 0 1-.814 1.686.75.75 0 0 0 .44 1.223ZM8.25 10.875a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM10.875 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875-1.125a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
-      {/* <div className="hero-content text-center py-20 px-6">
+      {/* <div className="px-6 py-20 text-center hero-content">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-6xl font-extrabold mb-4">Srinivas Gundali</h1>
-          <p className="text-xl mb-6">
+          <h1 className="mb-4 text-6xl font-extrabold">Srinivas Gundali</h1>
+          <p className="mb-6 text-xl">
             I'm an Experienced Full Stack Web Developer with over 10 years of
             expertise in Analysis, Design, Development, Integration Testing, and
             Implementation of web-based applications.
           </p>
           <a
             href={`tel:${phoneNumber}`}
-            className="btn btn-primary hover:bg-blue-600 transition-colors duration-300 mr-2"
+            className="mr-2 transition-colors duration-300 btn btn-primary hover:bg-blue-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +94,7 @@ const Portfolio = () => {
           </a>
           <a
             href={`mailto:${email}`}
-            className="btn btn-primary hover:bg-blue-600 transition-colors duration-300"
+            className="transition-colors duration-300 btn btn-primary hover:bg-blue-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +115,7 @@ const Portfolio = () => {
             href={`https://wa.me/${phoneNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-4 right-4 bg-green-500 rounded-full p-3 shadow-lg z-50 flex items-center justify-center"
+            className="fixed z-50 flex items-center justify-center p-3 bg-green-500 rounded-full shadow-lg bottom-4 right-4"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -132,9 +137,9 @@ const Portfolio = () => {
 };
 const ProfileSummary = () => {
   return (
-    <section className="p-8 rounded-lg mx-4 my-8">
-      <h2 className="text-3xl font-bold text-center mb-6">Profile Summary</h2>
-      <ul className="list-disc list-inside space-y-4">
+    <section className="p-8 mx-4 my-8 rounded-lg">
+      <h2 className="mb-6 text-3xl font-bold text-center">Profile Summary</h2>
+      <ul className="space-y-4 list-disc list-inside">
         <li>
           <strong>PHP Frameworks:</strong> Extensive experience with
           CodeIgniter, Laravel, Drupal, and QuickC.
@@ -257,41 +262,39 @@ const WorkExperience = () => {
   return (
     <>
       <section className="p-8 bg-base-100">
-        <h2 className="text-4xl font-bold text-center mb-12">
+        <h2 className="mb-12 text-4xl font-bold text-center">
           Work Experience Summary
         </h2>
-      <ul className="timeline timeline-vertical">
-      {experiences.map((experience, index) => (
-        <li key={index}>
-          <div className="timeline-start">{experience.tenure}</div>
-          <div className="timeline-middle ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="h-5 w-5"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-          <div className="timeline-end timeline-box transition-transform transform hover:scale-105 duration-300">
-          <h3 className="text-2xl font-bold mb-2">
-                  {experience.company}
-                </h3>
-                  <h4 className="text-lg font-semibold mb-1">
-                    {experience.designation}
-                  </h4>
-                  <p className="text-gray-600 mb-1">{experience.tenure}</p>
-                  <p className="text-gray-600">{experience.location}</p>
-          </div>
-          <hr />
-        </li>
-      ))}
-        {/* <li>
+        <ul className="timeline timeline-vertical">
+          {experiences.map((experience, index) => (
+            <li key={index}>
+              <div className="timeline-start">{experience.tenure}</div>
+              <div className="timeline-middle ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div className="transition-transform duration-300 transform timeline-end timeline-box hover:scale-105 glass">
+                <h3 className="mb-2 text-lg font-bold">{experience.company}</h3>
+                <h4 className="mb-1 font-semibold text-l">
+                  {experience.designation}
+                </h4>
+                <p className="mb-1 text-sm">{experience.tenure}</p>
+                <p className="text-sm">{experience.location}</p>
+              </div>
+              <hr />
+            </li>
+          ))}
+          {/* <li>
           <hr />
           <div className="timeline-start">1998</div>
           <div className="timeline-middle">
@@ -299,7 +302,7 @@ const WorkExperience = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-5 w-5"
+              className="w-5 h-5"
             >
               <path
                 fillRule="evenodd"
@@ -319,7 +322,7 @@ const WorkExperience = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-5 w-5"
+              className="w-5 h-5"
             >
               <path
                 fillRule="evenodd"
@@ -339,7 +342,7 @@ const WorkExperience = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-5 w-5"
+              className="w-5 h-5"
             >
               <path
                 fillRule="evenodd"
@@ -359,7 +362,7 @@ const WorkExperience = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              className="h-5 w-5"
+              className="w-5 h-5"
             >
               <path
                 fillRule="evenodd"
@@ -370,26 +373,26 @@ const WorkExperience = () => {
           </div>
           <div className="timeline-end timeline-box">Apple Watch</div>
         </li> */}
-      </ul>
+        </ul>
       </section>
       {/* <section className="p-8 bg-base-100">
-        <h2 className="text-4xl font-bold text-center mb-12">
+        <h2 className="mb-12 text-4xl font-bold text-center">
           Work Experience Summary
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {experiences.map((experience, index) => (
             <div
               key={index}
-              className="card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300"
+              className="overflow-hidden transition-transform duration-300 transform bg-white rounded-lg shadow-lg card hover:scale-105"
             >
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">
+                <h3 className="mb-2 text-2xl font-bold">
                   {experience.company}
                 </h3>
-                <h4 className="text-lg font-semibold mb-1">
+                <h4 className="mb-1 text-lg font-semibold">
                   {experience.designation}
                 </h4>
-                <p className="text-gray-600 mb-1">{experience.tenure}</p>
+                <p className="mb-1 text-gray-600">{experience.tenure}</p>
                 <p className="text-gray-600">{experience.location}</p>
               </div>
             </div>
@@ -426,15 +429,15 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section className="p-8 bg-neutral to-teal-400 text-white">
-      <h2 className="text-4xl font-bold text-center mb-12 text-neutral-content">
+    <section className="p-8 text-white bg-neutral to-teal-400">
+      <h2 className="mb-12 text-4xl font-bold text-center text-neutral-content">
         Skills
       </h2>
       <div className="flex flex-wrap justify-center gap-6">
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="badge badge-primary text-black-800 py-2 px-6 rounded-full shadow-lg hover:bg-gray-200 transition-colors duration-300"
+            className="px-8 py-3 transition-colors duration-300 rounded-full shadow-lg badge badge-secondary text-black-800 hover:bg-secondary-200"
           >
             {skill}
           </div>
@@ -622,21 +625,21 @@ const ProjectExperience = () => {
   ];
 
   return (
-    <section className="p-8 bg-base-200">
-      <h2 className="text-4xl font-bold text-center mb-12">
+    <section className="p-8 bg-base">
+      <h2 className="mb-12 text-4xl font-bold text-center">
         Project Experience
       </h2>
       <div className="space-y-12">
         {projectExperiences.map((company, index) => (
           <div key={index}>
-            <h3 className="text-3xl font-bold text-center mb-8">
+            <h3 className="mb-8 text-3xl font-bold text-center">
               {company.company}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {company.projects.map((project, projIndex) => (
                 <div
                   key={projIndex}
-                  className="card bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300"
+                  className="overflow-hidden transition-transform duration-300 transform rounded-lg shadow-lg card glass hover:scale-105"
                 >
                   <figure>
                     <img
@@ -645,21 +648,21 @@ const ProjectExperience = () => {
                       className="w-full h-32 object-fit"
                     />
                   </figure>
-                  <div className="card-body p-6">
-                    <h2 className="text-xl font-semibold mb-2">
+                  <div className="p-6 card-body">
+                    <h2 className="mb-2 text-xl font-semibold">
                       {project.title}
                     </h2>
-                    {/* <p className="text-gray-600 mb-2">{project.role}</p>
-                    <p className="text-gray-600 mb-2">{project.teamSize} team members</p>
-                    <p className="text-gray-600 mb-4">Technologies: {project.technologies}</p> */}
-                    <div className="card-actions flex justify-end">
+                    {/* <p className="mb-2 text-gray-600">{project.role}</p>
+                    <p className="mb-2 text-gray-600">{project.teamSize} team members</p>
+                    <p className="mb-4 text-gray-600">Technologies: {project.technologies}</p> */}
+                    <div className="flex justify-end card-actions">
                       <a
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-secondary hover:bg-gray-700 transition-colors duration-300"
+                        className="transition-colors duration-300 btn btn-secondary hover:bg-gray-700"
                       >
-                        <ChevronRightIcon className="h-5 w-5" />
+                        <ChevronRightIcon className="w-5 h-5" />
                       </a>
                     </div>
                   </div>
@@ -675,9 +678,9 @@ const ProjectExperience = () => {
 
 const Contact = () => {
   return (
-    <section id="contact" className="bg-neutral p-8 rounded-lg mx-4 my-8">
-      <h2 className="text-4xl font-bold mb-4 text-neutral-content">Contact</h2>
-      <form className="shadow-lg rounded-lg p-6 space-y-4">
+    <section id="contact" className="p-8 mx-4 my-8 rounded-lg bg-neutral">
+      <h2 className="mb-4 text-4xl font-bold text-neutral-content">Contact</h2>
+      <form className="p-6 space-y-4 rounded-lg shadow-lg">
         <div>
           <label htmlFor="name" className="block text-sm font-medium">
             Name
@@ -685,7 +688,7 @@ const Contact = () => {
           <input
             type="text"
             id="name"
-            className="input input-bordered w-full"
+            className="w-full input input-bordered"
           />
         </div>
         <div>
@@ -695,7 +698,7 @@ const Contact = () => {
           <input
             type="email"
             id="email"
-            className="input input-bordered w-full"
+            className="w-full input input-bordered"
           />
         </div>
         <div>
@@ -704,7 +707,7 @@ const Contact = () => {
           </label>
           <textarea
             id="message"
-            className="textarea textarea-bordered w-full"
+            className="w-full textarea textarea-bordered"
           ></textarea>
         </div>
         <button type="submit" className="btn btn-primary">
