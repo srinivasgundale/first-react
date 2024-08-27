@@ -23,7 +23,7 @@ const Header = () => {
 
   useEffect(() => {
     const htmlElement = document.documentElement;
-    htmlElement.setAttribute("data-theme", themeMode ? "light" : "dark");
+    htmlElement.setAttribute("data-theme", themeMode ? "dark" : "light");
     setThememode(themeMode);
   }, [themeMode]);
   /*const [isCartOpen, setIsCartOpen] = useState(false);
