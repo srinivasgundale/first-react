@@ -1,11 +1,16 @@
 import React, { useState, useRef } from "react";
 import useListOfCategories from "../../services/useListOfCategories";
 
-const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
+const Filter = ({
+  setData,
+  setSearchInput,
+  setHandleSearch,
+  setPriceRanger,
+}) => {
   const listOfCategories = useListOfCategories();
   const [searchText, setSearchText] = useState("");
   const [priceRange, setPriceRange] = useState(100);
-  const searchRef = useRef('');
+  const searchRef = useRef("");
   const handleSelect = (event) => {
     const slug = event.target.value;
     setData(slug);
@@ -19,17 +24,29 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
     const val = e.target.value;
     setSearchText(val);
     setSearchInput(val);
-    searchRef.current.focus()
+    searchRef.current.focus();
   };
-  
+  const hadlePriceRange = (e) => {
+    console.log("🚀 ~ hadlePriceRange ~ e:", e);
+    setPriceRange(e);
+    setPriceRanger(e);
+  };
+
   return (
-    < >
-      <h2 className="text-xl font-bold mb-4">Filters</h2>
+    <>
+      <h2 className="mb-4 text-xl font-bold">Filters</h2>
       <div className="mb-4">
         <label className="block mb-2">Category</label>
-        <select className="select select-bordered w-full" onChange={handleSelect}>
-          <option key="all-categories">All Categories</option>
-          <option key="top-products" value="top-products">TOP PRODUCTS</option>
+        <select
+          className="w-full select select-bordered"
+          onChange={handleSelect}
+        >
+          <option key="all-categories" value="all-categories">
+            All
+          </option>
+          <option key="top-products" value="top-products">
+            Top Rated
+          </option>
           {listOfCategories.map((cat, index) => (
             <option key={index} value={cat.slug}>
               {cat.name}
@@ -39,19 +56,40 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
       </div>
       <div className="mb-4">
         <label className="block mb-2">Search </label>
-        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" value={searchText}
+        <input
+          type="text"
+          placeholder="Type here"
+          className="w-full max-w-xs input input-bordered"
+          value={searchText}
           onChange={handleOnChange}
           onKeyPress={handleSearch}
-          ref={searchRef} />
-        
+          ref={searchRef}
+        />
       </div>
       <div className="mb-4">
-        <label className="block mb-2">Price Range - {priceRange}</label>
-        <input type="range" min={6} max={100} className="range range-primary" value={priceRange} onChange={(e) => setPriceRange(e.target.value)} />
+        <label htmlFor="temp" className="block mb-2">
+          Price Range - {priceRange}
+        </label>
+        <input
+          type="range"
+          min={6}
+          max={100}
+          className="range range-primary"
+          value={priceRange}
+          list="markers"
+          onChange={(e) => hadlePriceRange(e.target.value)}
+        />
+        <datalist id="markers">
+          <option value="0"></option>
+          <option value="25"></option>
+          <option value="50"></option>
+          <option value="75"></option>
+          <option value="100"></option>
+        </datalist>
       </div>
       <div className="mb-4">
         <label className="block mb-2">Rating</label>
-        <select className="select select-bordered w-full">
+        <select className="w-full select select-bordered">
           <option>All Ratings</option>
           <option>1 Star</option>
           <option>2 Stars</option>
@@ -60,7 +98,7 @@ const Filter = ({ setData, setSearchInput, setHandleSearch }) => {
           <option>5 Stars</option>
         </select>
       </div>
-      <button className="btn hidden btn-primary w-full">Apply Filters</button>
+      <button className="hidden w-full btn btn-primary">Apply Filters</button>
     </>
     // <nav className="navbar navbar-expand-lg navbar-light">
     //   <ul className="mr-auto navbar-nav">

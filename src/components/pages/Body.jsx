@@ -52,6 +52,8 @@ const Body = () => {
     (slug) => {
       if (slug === "top-products") {
         setFilteredRestaurant(listOfRest.filter((res) => res.rating >= 4));
+      } else if (slug === "all-categories") {
+        setFilteredRestaurant(listOfRest.filter((res) => res.rating >= 0));
       } else {
         setFilteredRestaurant(
           listOfRest.filter((res) => res.category === slug)
@@ -72,6 +74,14 @@ const Body = () => {
       }
     },
     [listOfRest, debouncedSearchText]
+  );
+  const handlePriceRanger = useCallback(
+    (e) => {
+      console.log("🚀 ~ Body ~ e:", e);
+
+      setFilteredRestaurant(listOfRest.filter((res) => res.price >= e));
+    },
+    [listOfRest]
   );
 
   const handleSearchText = useCallback((val) => {
@@ -110,11 +120,12 @@ const Body = () => {
                   setData={handleSelectNew}
                   setSearchInput={handleSearchText}
                   setHandleSearch={handleSearchNew}
+                  setPriceRanger={handlePriceRanger}
                 />
               </div>
               <div className="grid w-full grid-cols-1 gap-4 p-4 md:w-3/4 md:grid-cols-2 lg:grid-cols-3">
                 {filteredRestaurant.map((restaurant) => (
-                  <Fragment className="" key={restaurant.id}>
+                  <Fragment key={restaurant.id}>
                     {restaurant.id === 1 ? (
                       <RestaurantCardPromoted resData={restaurant} />
                     ) : (
